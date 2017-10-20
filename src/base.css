@@ -1,0 +1,173 @@
+/*base*/
+
+/*header*/
+
+/*END:header*/
+
+/*footer*/
+
+/*END:footer*/
+
+html,
+body {
+    font-size: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 1;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding-top: 3.2em;
+    background: url('https://cdn-images-1.medium.com/max/1600/1*aT0YAgCTsQgGAO6K0TK0DA.jpeg');
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.wrapper::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: url('http://alanpride.com/admin/images/BG_Radial_gradient.png');
+}
+
+.wrapper--inner {
+    background: url('https://i.imgur.com/Z2lWU8K.jpg');
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.wrapper--inner::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: url('http://alanpride.com/admin/images/BG_Radial_gradient.png');
+}
+
+.clearfix:after,
+.myContainer:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.content-container {
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 69em;
+    -webkit-transform: translate(-50%, 10em);
+    -moz-transform: translate(-50%, 10em);
+    -ms-transform: translate(-50%, 10em);
+    -o-transform: translate(-50%, 10em);
+    transform: translate(-50%, 10em);
+}
+
+@media screen and (min-width: 1920px) {
+    .content-container {
+        width: 94em;
+    }
+}
+
+@media screen and (min-width: 3840px) {
+    .content-container {
+        width: 176em;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .content-container {
+        width: 53.2em;
+    }
+}
+
+.myContainer {
+    position: relative;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.btn {
+    font-family: 'Roboto-Bold';
+    font-size: 1em;
+    display: inline-block;
+    padding: .8em 4em;
+    -webkit-transition: all .15s ease-in;
+    -moz-transition: all .15s ease-in;
+    -o-transition: all .15s ease-in;
+    transition: all .15s ease-in;
+    color: #c0c0c0;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    -webkit-box-shadow: inset 0 0 0 2px #c0c0c0;
+    -moz-box-shadow: inset 0 0 0 2px #c0c0c0;
+    box-shadow: inset 0 0 0 2px #c0c0c0;
+}
+
+.btn:hover {
+    color: #000;
+    background: #ffde39;
+    -webkit-box-shadow: 0 3px 9px #000;
+    -moz-box-shadow: 0 3px 9px #000;
+    box-shadow: 0 3px 9px #000;
+}
+
+.btn:hover .money-icon {
+    background: url('./img/ruble-currency-sign-black.png');
+}
+
+.btn:focus {
+    color: #000;
+    outline: none;
+    background: #ffde39;
+    -webkit-box-shadow: 0 3px 9px #000;
+    -moz-box-shadow: 0 3px 9px #000;
+    box-shadow: 0 3px 9px #000;
+}
+
+.btn:focus .money-icon {
+    background: url('./img/ruble-currency-sign-black.png');
+}
+
+.btn.active {
+    color: #000;
+    background: #ffde39;
+    -webkit-box-shadow: 0 3px 9px #000;
+    -moz-box-shadow: 0 3px 9px #000;
+    box-shadow: 0 3px 9px #000;
+}
+
+.btn.active .money-icon {
+    background: url('./img/ruble-currency-sign-black.png');
+}
+
+.btn.disabled {
+    display: none;
+}
+
+.btn .money-icon {
+    display: block;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    -webkit-transition: all .15s ease-in;
+    -moz-transition: all .15s ease-in;
+    -o-transition: all .15s ease-in;
+    transition: all .15s ease-in;
+    background: url('./img/ruble-currency-sign.png');
+}
+
+/*END:base*/
+/*# sourceMappingURL=sourcemaps/base.css.map */
