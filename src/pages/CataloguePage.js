@@ -7,6 +7,7 @@ import MenuViewCollection from '../MenuView/MenuViewCollection';
 import MenuViewDefault from '../MenuView/MenuViewDefault';
 import './CataloguePage.scss';
 import './CollectionPage.scss';
+const baseUrl = process.env.PUBLIC_URL; 
 
 const collections = [
   {name: 'Supperheroes', count: '22'},
@@ -34,7 +35,7 @@ class CataloguePage extends Component {
   renderSelectedOption = () => (
     this.state.selectedOption  === 'Collections'
       ? collections.map((collection, index) => 
-          <Link to={`/collection`} key={index}>
+          <Link to={`${baseUrl}/collection`} key={index}>
             <MenuViewCollection
               count={collection.count}
               index={index}
