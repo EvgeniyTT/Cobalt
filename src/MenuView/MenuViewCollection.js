@@ -4,7 +4,10 @@ import '../pages/CollectionPage.scss';
 class MenuViewCollection extends Component {
   render() {
     return (
-      <div className="collection -js-goto-innerpage" tabIndex="1">
+      <div
+        className="collection -js-goto-innerpage"
+        onClick={() => {console.log('CLICK CLIK CLICK');}}
+        tabIndex="1">
         <div className="collection-back__one"></div>
         <div className="collection-back__two"></div>
         <div className={`collection-holder collection-bg${this.props.index + 1}`}>
