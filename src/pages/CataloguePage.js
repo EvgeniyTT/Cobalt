@@ -5,6 +5,8 @@ import BackBtn from '../BackBtn/BackBtn';
 import Clock from '../Clock/Clock';
 import MenuViewCollection from '../MenuView/MenuViewCollection';
 import MenuViewDefault from '../MenuView/MenuViewDefault';
+import './CataloguePage.scss';
+import './CollectionPage.scss';
 
 const collections = [
   {name: 'Supperheroes', count: '22'},
@@ -47,18 +49,16 @@ class CataloguePage extends Component {
   render() {
     return ([
       <div className="nav-wrapper">
-        <BackBtn />
-        {this.state.isShowMenu
-          ? <Menu
-              handeMouseEnter={this.handleOptionHover}
-              handeOptionClick={this.handeOptionClick}
-            />
-          : null
-        }
+        <BackBtn onClick={() => {console.log('BABABAB');  this.setState({isShowMenu: true})}} />
+        <Menu
+          isShow={this.state.isShowMenu}
+          handeMouseEnter={this.handleOptionHover}
+          handeOptionClick={this.handeOptionClick}
+        />
       </div>,
       <div className="wrapper">
         <Clock />
-        <div className="collection-wrapper">
+        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
           {this.renderSelectedOption()}
         </div>
       </div>

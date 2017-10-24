@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './MenuViewCollection.css';
+import '../pages/CollectionPage.scss';
 
 class MenuViewCollection extends Component {
   render() {

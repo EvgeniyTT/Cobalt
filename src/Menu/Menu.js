@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MenuOption from '../MenuOption/MenuOption'
-// import './Menu.css';
+import './Menu.scss';
 
 const menuOptions = [
   { option: 'Featured' },
@@ -14,7 +14,7 @@ const menuOptions = [
 class Menu extends Component {
   render() {
     return (
-      <div className="nav-hidden">
+      <div className={`nav-hidden ${this.props.isShow ? '' : 'hide-menu'}`}>
         <div className="nav-hidden__holder">
           <span className="nav-hidden-title">Catalogue</span>
           <div id="jsNavList" className="nav-hidden-list">

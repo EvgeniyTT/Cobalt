@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class MenuViewDefault extends Component {
   render() {
     return (
-      <div class="collection-inner-title">
-        <span class="nav-inner-title">{this.props.option}</span>
+      <div className="collection-inner-title">
+        <span className="nav-inner-title">{this.props.option}</span>
       </div>
     );
   }
