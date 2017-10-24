@@ -35,14 +35,15 @@ class CataloguePage extends Component {
   renderSelectedOption = () => (
     this.state.selectedOption  === 'Collections'
       ? collections.map((collection, index) => 
-          <Link to={`${baseUrl}/collection`} key={index}>
+          // <Link to={`${baseUrl}/collection`} key={index}>
             <MenuViewCollection
               count={collection.count}
               index={index}
               name={collection.name}
               key={index}
+              onClick={() => {console.log('CLICK CLIK CLICK');}}
             />
-          </Link>
+          // </Link>
         )
       : <MenuViewDefault option={this.state.selectedOption} />
   );
