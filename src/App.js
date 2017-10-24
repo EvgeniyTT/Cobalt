@@ -10,8 +10,8 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={CataloguePage}/>
-        <Route path='/collection' component={CollectionPage}/>
+        <Route exact path='cobalt/' component={CataloguePage}/>
+        <Route path='cobalt/collection' component={CollectionPage}/>
       </Switch>
     )
   }
