@@ -1,5 +1,6 @@
 {
   "name": "cobalt2",
+  "homepage": "https://evgeniytt.github.io/cobalt",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
