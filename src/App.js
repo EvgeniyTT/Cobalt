@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import logo from './logo.svg';
-import './base.css';
-import './assets.css';
+import './bundle.css';
 import CataloguePage from './pages/CataloguePage';
 import CollectionPage from './pages/CollectionPage';
-var baseUrl = process.env.PUBLIC_URL; 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state={ currentPageNum: 0 }
+  }
+
+  setCurrentPage = pageNum => {
+    this.setState({ currentPageNum: pageNum })
+  }
+
   render() {
-    return (
-      <Switch>
-        <Route exact path={baseUrl + '/'} component={CataloguePage}/>
-        <Route path={baseUrl + '/collection'} component={CollectionPage}/>
-      </Switch>
-    )
+    return (() => {switch (this.state.currentPageNum) {
+        case 0:
+          return <CataloguePage setCurrentPage={this.setCurrentPage}/>;
+        case 1:
+          return <CollectionPage setCurrentPage={this.setCurrentPage}/>;
+        default:
+          return <CataloguePage setCurrentPage={this.setCurrentPage}/>;
+      }})()
   }
 }
 

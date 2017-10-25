@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import BackBtn from '../BackBtn/BackBtn';
 import Clock from '../Clock/Clock';
 import Card from '../Card/Card';
@@ -23,6 +24,13 @@ const sortOptions = [
   {text: 'Rating', sortBy: 'rating'},
   {text: 'Release Date', sortBy: 'releaseDate'}
 ]
+
+const KEY_ENTER = 13;
+const KEY_LEFT = 37;
+const KEY_UP = 38;
+const KEY_RIGHT = 39;
+const KEY_DOWN = 40;
+const ITEMS_IN_ROW = 5;
 
 class CollectionPage extends Component {
   constructor(props){
@@ -50,11 +58,34 @@ class CollectionPage extends Component {
         : 0
   );
 
+  componentDidMount() {
+    this.setState({ focus: this.buyBtn })
+  }
+
+  handleKeyNavigation = (event, index) => {
+    console.log(this.buyBtn);
+    console.log(document.activeElement);
+    console.log(ReactDOM.findDOMNode(this.backBtn));
+
+    if (this.buyBtn == document.activeElement) {
+      switch (event.keyCode) {
+        case KEY_LEFT:
+          ReactDOM.findDOMNode(this.backBtn).focus();
+      }
+    }
+  }
+
   render() {
     const sortedCards = cards.sort(this.sortItems);
+    this.state.focus && this.state.focus.focus();
     return ([
       <div className="nav-wrapper">
-        <BackBtn link="/" />
+        <BackBtn
+          pageNum="2"
+          onKeyDown={this.handleKeyNavigation}
+          ref={node => {this.backBtn = node}}
+          setCurrentPage={this.props.setCurrentPage}
+        />
       </div>,
       <div className="wrapper wrapper--inner">
         <Clock />
@@ -82,9 +113,11 @@ class CollectionPage extends Component {
                       className="btn"
                       name="buy"
                       onClick={this.hideBuyBtn}
+                      onKeyDown={this.handleKeyNavigation}
+                      ref={node => {this.buyBtn = node}}
                       tabIndex="1"
                     >
-                      Buy all XXXX
+                      Buy all XXX
                       <span className="money-icon"></span>
                     </div>
                   : null 
@@ -94,6 +127,8 @@ class CollectionPage extends Component {
                     className="sort-card__title"
                     name="sort-card__title"
                     onClick={() => {this.setState({isShowSortOptions: !this.state.isShowSortOptions})}}
+                    onKeyDown={this.handleKeyNavigation}
+                    ref={node => {this.sortBtn = node}}
                     tabIndex="1"
                   >
                     <span>Sort: <em>Release date</em></span>
@@ -123,8 +158,10 @@ class CollectionPage extends Component {
                   index={index}
                   key={index}
                   name={card.name}
-                  title={card.title}
+                  onKeyDown={event => {this.handleKeyNavigation(event, index)}}
                   pic={card.pic}
+                  ref={node => {this.card = node}}
+                  title={card.title}
                 />
               )}
             </div>

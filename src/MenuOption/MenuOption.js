@@ -4,7 +4,7 @@ class MenuOption extends Component {
   render() {
     return (
       <div
-        className="nav-hidden-list__item"
+        className={`nav-hidden-list__item ${this.props.selectedOption === this.props.option ? 'active' : ''}`}
         name="menu_item"
         tabIndex="1"
         onMouseEnter={() => {this.props.handeMouseEnter(this.props.option)}}
@@ -17,4 +17,3 @@ class MenuOption extends Component {
 }
   
 export default MenuOption;
-

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import Menu from '../Menu/Menu';
 import BackBtn from '../BackBtn/BackBtn';
 import Clock from '../Clock/Clock';
@@ -7,7 +6,6 @@ import MenuViewCollection from '../MenuView/MenuViewCollection';
 import MenuViewDefault from '../MenuView/MenuViewDefault';
 import './CataloguePage.scss';
 import './CollectionPage.scss';
-const baseUrl = process.env.PUBLIC_URL; 
 
 const collections = [
   {name: 'Supperheroes', count: '22'},
@@ -35,15 +33,13 @@ class CataloguePage extends Component {
   renderSelectedOption = () => (
     this.state.selectedOption  === 'Collections'
       ? collections.map((collection, index) => 
-          // <Link to={`${baseUrl}/collection`} key={index}>
-            <MenuViewCollection
-              count={collection.count}
-              index={index}
-              name={collection.name}
-              key={index}
-              onClick={() => {console.log('CLICK CLIK CLICK');}}
-            />
-          // </Link>
+          <MenuViewCollection
+            count={collection.count}
+            index={index}
+            name={collection.name}
+            key={index}
+            setCurrentPage={this.props.setCurrentPage}
+          />
         )
       : <MenuViewDefault option={this.state.selectedOption} />
   );
@@ -51,11 +47,12 @@ class CataloguePage extends Component {
   render() {
     return ([
       <div className="nav-wrapper">
-        <BackBtn onClick={() => {console.log('BABABAB');  this.setState({isShowMenu: true})}} />
+        <BackBtn onClick={() => { this.setState({isShowMenu: true}) }} />
         <Menu
           isShow={this.state.isShowMenu}
           handeMouseEnter={this.handleOptionHover}
           handeOptionClick={this.handeOptionClick}
+          selectedOption={this.state.selectedOption}
         />
       </div>,
       <div className="wrapper">

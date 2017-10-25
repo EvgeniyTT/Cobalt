@@ -25,6 +25,7 @@ class Menu extends Component {
                 key={option.option}
                 link={option.link}
                 option={option.option}
+                selectedOption={this.props.selectedOption}
               />)
             }
           </div>

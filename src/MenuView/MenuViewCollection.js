@@ -6,7 +6,7 @@ class MenuViewCollection extends Component {
     return (
       <div
         className="collection -js-goto-innerpage"
-        onClick={() => {console.log('CLICK CLIK CLICK');}}
+        onClick={() => {this.props.setCurrentPage(1)}}
         tabIndex="1">
         <div className="collection-back__one"></div>
         <div className="collection-back__two"></div>
