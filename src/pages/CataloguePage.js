@@ -47,7 +47,11 @@ class CataloguePage extends Component {
   render() {
     return ([
       <div className="nav-wrapper">
-        <BackBtn onClick={() => { this.setState({isShowMenu: true}) }} />
+        <div className="nav">
+          <BackBtn
+            onClick={() => { this.setState({isShowMenu: true}) }}
+          />
+        </div>
         <Menu
           isShow={this.state.isShowMenu}
           handeMouseEnter={this.handleOptionHover}

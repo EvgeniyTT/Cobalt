@@ -30,11 +30,11 @@ const KEY_LEFT = 37;
 const KEY_UP = 38;
 const KEY_RIGHT = 39;
 const KEY_DOWN = 40;
-const ITEMS_IN_ROW = 5;
+const CARDS_IN_ROW = 5;
 
 class CollectionPage extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       isShowBuyBtn: true,
       isShowSortOptions: false,
@@ -42,8 +42,13 @@ class CollectionPage extends Component {
     }
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.buyBtn).focus();
+  }
+
   hideBuyBtn = () => {
-    this.setState({ isShowBuyBtn: false })
+    this.setState({ isShowBuyBtn: false });
+    ReactDOM.findDOMNode(this.sortBtn).focus();
   }
 
   setSortingCards = sorting => {
@@ -58,34 +63,115 @@ class CollectionPage extends Component {
         : 0
   );
 
-  componentDidMount() {
-    this.setState({ focus: this.buyBtn })
+  handleBuyBtnKeyDown = event => {
+    if (event.keyCode === KEY_ENTER) {
+      this.hideBuyBtn();
+    } else {
+      this.handleKeyNavigation(event)
+    }
+  }
+
+  handleSortKeyDown = event => {
+    if (event.keyCode === KEY_ENTER) {
+      this.setState({isShowSortOptions: !this.state.isShowSortOptions});
+    } else {
+      this.handleKeyNavigation(event)
+    }
+  }
+
+  handleSortOptionKeyDown = (event, sortBy, index)=> {
+    if (event.keyCode === KEY_ENTER) {
+      this.setSortingCards(sortBy)
+    } else {
+      this.handleKeyNavigation(event, index)
+    }
   }
 
   handleKeyNavigation = (event, index) => {
-    console.log(this.buyBtn);
-    console.log(document.activeElement);
-    console.log(ReactDOM.findDOMNode(this.backBtn));
-
     if (this.buyBtn == document.activeElement) {
       switch (event.keyCode) {
         case KEY_LEFT:
           ReactDOM.findDOMNode(this.backBtn).focus();
+          break;
+        case KEY_RIGHT:
+          ReactDOM.findDOMNode(this.sortBtn).focus();
+          break;
+        case KEY_DOWN:
+          ReactDOM.findDOMNode(this.card0).focus();
+          break;
+      }
+    } else if (event.target.getAttribute('name') === 'back') {
+      switch (event.keyCode) {
+        case KEY_RIGHT:
+          ReactDOM.findDOMNode(this.buyBtn).focus();
+          break;
+      }
+    } else if (this.sortBtn == document.activeElement) {
+      switch (event.keyCode) {
+        case KEY_LEFT:
+          ReactDOM.findDOMNode(this.buyBtn).focus();
+          break;
+        case KEY_DOWN:
+          if (this.state.isShowSortOptions) {
+            ReactDOM.findDOMNode(this.sortOptionBtn0).focus();
+          } else {
+            ReactDOM.findDOMNode(this.card4).focus();
+          }
+          break;
+      }
+    } else if (event.target.className.includes('sort-card-list__item')) {
+      switch (event.keyCode) {
+        case KEY_DOWN:
+          if (index < sortOptions.length - 1) ReactDOM.findDOMNode(this[`sortOptionBtn${index + 1}`]).focus();
+          break;
+        case KEY_UP:
+          if (index === 0) {
+            ReactDOM.findDOMNode(this.sortBtn).focus();
+          } else {
+            ReactDOM.findDOMNode(this[`sortOptionBtn${index - 1}`]).focus();
+          }
+          break;
+      }
+    } else if (event.target.getAttribute('name') === 'card') {
+      switch (event.keyCode) {
+        case KEY_LEFT:
+          if (index === 0) {
+            ReactDOM.findDOMNode(this.backBtn).focus();
+          } else {
+            ReactDOM.findDOMNode(this[`card${index - 1}`]).focus();
+          }
+          break;
+        case KEY_RIGHT:
+          if (index < cards.length - 1) ReactDOM.findDOMNode(this[`card${index + 1}`]).focus();
+          break;
+        case KEY_DOWN:
+          if (index <= cards.length - CARDS_IN_ROW) ReactDOM.findDOMNode(this[`card${index + CARDS_IN_ROW}`]).focus();
+          break;
+        case KEY_UP:
+          if (index < 3) {
+            ReactDOM.findDOMNode(this.buyBtn).focus();
+          } else if (index === 3 || index === 4) {
+            ReactDOM.findDOMNode(this.sortBtn).focus();
+          } else if (index >= CARDS_IN_ROW) {
+            ReactDOM.findDOMNode(this[`card${index - CARDS_IN_ROW}`]).focus();
+          }
+          break;
       }
     }
   }
 
   render() {
     const sortedCards = cards.sort(this.sortItems);
-    this.state.focus && this.state.focus.focus();
     return ([
       <div className="nav-wrapper">
-        <BackBtn
-          pageNum="2"
-          onKeyDown={this.handleKeyNavigation}
-          ref={node => {this.backBtn = node}}
-          setCurrentPage={this.props.setCurrentPage}
-        />
+        <div className="nav">
+          <BackBtn
+            pageNum="2"
+            onKeyDown={this.handleKeyNavigation}
+            ref={node => {this.backBtn = node}}
+            setCurrentPage={this.props.setCurrentPage}
+          />
+        </div>
       </div>,
       <div className="wrapper wrapper--inner">
         <Clock />
@@ -113,7 +199,7 @@ class CollectionPage extends Component {
                       className="btn"
                       name="buy"
                       onClick={this.hideBuyBtn}
-                      onKeyDown={this.handleKeyNavigation}
+                      onKeyDown={this.handleBuyBtnKeyDown}
                       ref={node => {this.buyBtn = node}}
                       tabIndex="1"
                     >
@@ -127,7 +213,7 @@ class CollectionPage extends Component {
                     className="sort-card__title"
                     name="sort-card__title"
                     onClick={() => {this.setState({isShowSortOptions: !this.state.isShowSortOptions})}}
-                    onKeyDown={this.handleKeyNavigation}
+                    onKeyDown={this.handleSortKeyDown}
                     ref={node => {this.sortBtn = node}}
                     tabIndex="1"
                   >
@@ -136,12 +222,14 @@ class CollectionPage extends Component {
                   </div>
 
                   <div className={`sort-card-list ${this.state.isShowSortOptions ? 'active' : ''} `}>
-                    {sortOptions.map(option => (
+                    {sortOptions.map((option, index) => (
                       <span
                         className={`sort-card-list__item ${this.state.sorting === option.sortBy ? 'active' : ''} `}
                         data-sort={option.text}
                         key={option.text}
                         onClick={() => {this.setSortingCards(option.sortBy)}}
+                        onKeyDown={event => {this.handleSortOptionKeyDown(event, option.sortBy, index)}}
+                        ref={node => {this['sortOptionBtn' + index] = node}}
                         tabIndex="1"
                       >
                         {option.text}
@@ -158,9 +246,9 @@ class CollectionPage extends Component {
                   index={index}
                   key={index}
                   name={card.name}
-                  onKeyDown={event => {this.handleKeyNavigation(event, index)}}
+                  onKeyDown={this.handleKeyNavigation}
                   pic={card.pic}
-                  ref={node => {this.card = node}}
+                  ref={node => {this['card' + index] = node}}
                   title={card.title}
                 />
               )}
