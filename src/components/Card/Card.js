@@ -1,3 +1,4 @@
+/* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from 'react';
 import './Card.scss';
 
@@ -8,6 +9,7 @@ class Card extends Component {
         className="card"
         name="card"
         onKeyDown={event => this.props.onKeyDown(event, this.props.index)}
+        role="button"
         tabIndex="1"
       >
         <div className={`card-body body-bg${this.props.pic}`}>
@@ -18,9 +20,5 @@ class Card extends Component {
     );
   }     
 }
-  
+
 export default Card;
-
-
-
-

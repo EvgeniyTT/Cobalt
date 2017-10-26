@@ -20,8 +20,10 @@ class CataloguePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: 'Featured',
-      isShowMenu: true
+      isFocusMenu: true,
+      isShowMenu: true,
+      selectedCollectionIndex: 0,
+      selectedOption: 'Featured'
     };
   }
 
@@ -50,10 +52,16 @@ class CataloguePage extends Component {
   handleCollectionNavigation = (event, index) => {
     switch (event.keyCode) {
       case KEY_LEFT:
-        if (index > 0) ReactDOM.findDOMNode(this[`collectionBtn${index - 1}`]).focus();
+        if (index > 0) {
+          ReactDOM.findDOMNode(this[`collectionBtn${index - 1}`]).focus();
+          this.setState({ selectedCollectionIndex: index - 1 });
+        }
         break;
       case KEY_RIGHT:
-        if (index < collections.length - 1) ReactDOM.findDOMNode(this[`collectionBtn${index + 1}`]).focus();
+        if (index < collections.length - 1) {
+          ReactDOM.findDOMNode(this[`collectionBtn${index + 1}`]).focus();
+          this.setState({ selectedCollectionIndex: index + 1 });
+        }
         break;
     }
   }
@@ -64,10 +72,12 @@ class CataloguePage extends Component {
         <MenuViewCollection
           count={collection.count}
           index={index}
+          isShowMenu={this.state.isShowMenu}
           key={collection.name}
           name={collection.name}
           ref={node => { this[`collectionBtn${index}`] = node; }}
           onKeyDown={this.handleCollectionNavigation}
+          selectedCollectionIndex={this.state.selectedCollectionIndex}
           setCurrentPage={this.props.setCurrentPage}
         />))
       : <MenuViewDefault option={this.state.selectedOption} />
@@ -93,6 +103,7 @@ class CataloguePage extends Component {
         />
       </div>,
       <div className="wrapper">
+        <div className="wrapper__sub" />
         <Clock />
         <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
           {this.renderSelectedOption()}

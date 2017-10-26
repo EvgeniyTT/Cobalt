@@ -915,23 +915,23 @@ screen and (max-height: 1600px) {
 }
 
 .sort-card__title:focus {
-    color: #fff;
+    color: #242c33;
     outline: none;
-    background: #242c33;
+    background: #ffde39;
     -webkit-box-shadow: 0 5px 9px #000;
     -moz-box-shadow: 0 5px 9px #000;
     box-shadow: 0 5px 9px #000;
 }
 
 .sort-card__title:focus .icon {
-    background: url('./assets/img/down-arrow.png');
+    background: url('./assets/img/down-arrow-black.png');
 }
 
 @media screen and (min-width: 3840px) {
     .sort-card__title:focus .icon {
         width: .8em;
         height: .7em;
-        background: url('./assets/img/down-chevron.png');
+        background: url('./assets/img/down-chevron-big-black.png');
     }
 }
 

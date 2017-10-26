@@ -1,3 +1,4 @@
+/* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from 'react';
 
 class MenuViewDefault extends Component {
@@ -9,6 +10,5 @@ class MenuViewDefault extends Component {
     );
   }
 }
-  
-export default MenuViewDefault;
 
+export default MenuViewDefault;

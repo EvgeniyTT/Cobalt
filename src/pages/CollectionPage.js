@@ -32,7 +32,9 @@ const CARDS_IN_ROW = 5;
 class CollectionPage extends Component {
   constructor(props) {
     super(props);
+    this.cardHeigth = 0;
     this.state = {
+      activeRow: 0,
       isShowBuyBtn: true,
       isShowSortOptions: false,
       sorting: sortOptions[0].sortBy
@@ -41,6 +43,11 @@ class CollectionPage extends Component {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this.buyBtn).focus();
+    this.cardHeigth = ReactDOM.findDOMNode(this.card0).getBoundingClientRect().height;
+  }
+
+  setActiveRow = index => {
+    this.setState({ activeRow: Math.floor(index / CARDS_IN_ROW) });
   }
 
   setSortingCards = sorting => {
@@ -171,6 +178,7 @@ class CollectionPage extends Component {
         </div>
       </div>,
       <div className="wrapper wrapper--inner">
+        <div className="wrapper__sub" />
         <Clock />
         <div className="content-container">
           <div className="description">
@@ -217,7 +225,7 @@ class CollectionPage extends Component {
                   role="button"
                   tabIndex="1"
                 >
-                  <span>Sort: <em>Release date</em></span>
+                  <span>Sort: <em>{ sortOptions.find(option => option.sortBy === this.state.sorting).text }</em></span>
                   <span className="icon" />
                 </div>
                 <div className={`sort-card-list ${this.state.isShowSortOptions ? 'active' : ''} `}>
@@ -249,6 +257,7 @@ class CollectionPage extends Component {
                   onKeyDown={this.handleKeyNavigation}
                   pic={card.pic}
                   ref={node => { this[`card${index}`] = node; }}
+                  style={{ transform: `translateY(${this.cardHeigth * this.state.activeRow}px)` }}
                   title={card.title}
                 />
               ))}
