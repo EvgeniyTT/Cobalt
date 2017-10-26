@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
+import { KEY_ENTER } from '../../utils/keys';
 // import './BackBtn.scss';
-const KEY_ENTER = 13;
 
 class BackBtn extends Component {
-
   handleKeyDown = event => {
     if (event.keyCode === KEY_ENTER) {
       this.props.setCurrentPage && this.props.setCurrentPage(Number(this.props.pageNum) || 0);
     } else {
-      this.props.onKeyDown(event)
+      this.props.onKeyDown && this.props.onKeyDown(event);
     }
   }
+
+  handleClick = () => {
+    this.props.setCurrentPage && this.props.setCurrentPage(Number(this.props.pageNum) || 0);
+    this.props.onClick && this.props.onClick();
+  }
+
   render() {
     return (
       <div
         className="nav-arrow -js-goto-startpage"
         name="back"
-        onClick={() => this.props.setCurrentPage && this.props.setCurrentPage(Number(this.props.pageNum) || 0)}
+        onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
-        tabIndex="1">
-      </div>
+        role="button"
+        tabIndex="1"
+      />
     );
   }
 }
-  
+
 export default BackBtn;
 

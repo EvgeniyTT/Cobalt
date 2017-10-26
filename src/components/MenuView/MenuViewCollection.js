@@ -1,15 +1,27 @@
+/* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from 'react';
-import '../pages/CollectionPage.scss';
+import { KEY_ENTER } from '../../utils/keys';
 
 class MenuViewCollection extends Component {
+  handleKeyDown = event => {
+    if (event.keyCode === KEY_ENTER) {
+      this.props.setCurrentPage(1);
+    } else {
+      this.props.onKeyDown && this.props.onKeyDown(event, this.props.index);
+    }
+  }
+
   render() {
     return (
       <div
         className="collection -js-goto-innerpage"
-        onClick={() => {this.props.setCurrentPage(1)}}
-        tabIndex="1">
-        <div className="collection-back__one"></div>
-        <div className="collection-back__two"></div>
+        onClick={() => { this.props.setCurrentPage(1); }}
+        onKeyDown={this.handleKeyDown}
+        role="button"
+        tabIndex="1"
+      >
+        <div className="collection-back__one" />
+        <div className="collection-back__two" />
         <div className={`collection-holder collection-bg${this.props.index + 1}`}>
           <div className="collection-text">
             <span className="collection-title">Collection</span>
@@ -17,7 +29,7 @@ class MenuViewCollection extends Component {
           </div>
           <div className="collection-count">
             <div className="collection-count-holder">
-              <span className="collection-count__icon"></span>
+              <span className="collection-count__icon" />
               <span className="collection-count__count">{this.props.count}</span>
             </div>
           </div>
@@ -26,6 +38,6 @@ class MenuViewCollection extends Component {
     );
   }
 }
-  
+
 export default MenuViewCollection;
 

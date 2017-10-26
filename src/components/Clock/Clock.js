@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import './Clock.scss';
+// import './Clock.scss';
 
 class Clock extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     const [date, time] = this.getCurrentTime();
-    this.state = {
-      time: time,
-      date: date,
-    }
+    this.state = { time, date };
   }
 
   componentDidMount() {
     setInterval(() => {
       const [date, time] = this.getCurrentTime();
-      this.setState({
-        time: time,
-        date: date,
-      });
+      this.setState({ time, date });
     }, 1000);
   }
 
@@ -28,23 +22,22 @@ class Clock extends Component {
   }
 
   getCurrentTime = () => {
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const currentDate = new Date();
     const hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();
-    const monthName=monthNames[currentDate.getMonth()]
-    return [`${currentDate.getDate()} ${monthName}`, `${hours}:${minutes}`]
+    const monthName = monthNames[currentDate.getMonth()];
+    return [`${currentDate.getDate()} ${monthName}`, `${hours}:${minutes}`];
   }
 
   render() {
     return (
-       <div className="time">
+      <div className="time">
         <span id="time" className="time-count">{this.state.time}</span>
         <span id="date" className="time-day">{this.state.date}</span>
       </div>
     );
   }
 }
-  
-export default Clock;
 
+export default Clock;

@@ -14,11 +14,6 @@ html {
     box-sizing: inherit;
 }
 
-input::-moz-focus-inner,
-button::-moz-focus-inner {
-    border: 0;
-}
-
 html,
 body,
 div,
@@ -133,20 +128,20 @@ body {
 
 @font-face {
     font-family: 'Roboto-Regular';
-    src: url('./fonts/Roboto/Roboto-Regular/Roboto-Regular.eot');
-    src: url('./fonts/Roboto/Roboto-Regular/Roboto-Regular.eot?#iefix') format('embedded-opentype'), url('./fonts/Roboto/Roboto-Regular/Roboto-Regular.woff') format('woff'), url('./fonts/Roboto/Roboto-Regular/Roboto-Regular.ttf') format('truetype');
+    src: url('./assets/fonts/Roboto/Roboto-Regular/Roboto-Regular.eot');
+    src: url('./assets/fonts/Roboto/Roboto-Regular/Roboto-Regular.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Roboto/Roboto-Regular/Roboto-Regular.woff') format('woff'), url('./assets/fonts/Roboto/Roboto-Regular/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto-Medium';
-    src: url('./fonts/Roboto/Roboto-Medium/Roboto-Medium.eot');
-    src: url('./fonts/Roboto/Roboto-Medium/Roboto-Medium.eot?#iefix') format('embedded-opentype'), url('./fonts/Roboto/Roboto-Medium/Roboto-Medium.woff') format('woff'), url('./fonts/Roboto/Roboto-Medium/Roboto-Medium.ttf') format('truetype');
+    src: url('./assets/fonts/Roboto/Roboto-Medium/Roboto-Medium.eot');
+    src: url('./assets/fonts/Roboto/Roboto-Medium/Roboto-Medium.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Roboto/Roboto-Medium/Roboto-Medium.woff') format('woff'), url('./assets/fonts/Roboto/Roboto-Medium/Roboto-Medium.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto-Bold';
-    src: url('./fonts/Roboto/Roboto-Bold/Roboto-Bold.eot');
-    src: url('./fonts/Roboto/Roboto-Bold/Roboto-Bold.eot?#iefix') format('embedded-opentype'), url('./fonts/Roboto/Roboto-Bold/Roboto-Bold.woff') format('woff'), url('./fonts/Roboto/Roboto-Bold/Roboto-Bold.ttf') format('truetype');
+    src: url('./assets/fonts/Roboto/Roboto-Bold/Roboto-Bold.eot');
+    src: url('./assets/fonts/Roboto/Roboto-Bold/Roboto-Bold.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Roboto/Roboto-Bold/Roboto-Bold.woff') format('woff'), url('./assets/fonts/Roboto/Roboto-Bold/Roboto-Bold.ttf') format('truetype');
 }
 
 .nav-wrapper {
@@ -165,7 +160,7 @@ body {
     display: block;
     width: 44em;
     height: 100%;
-    background: url('./img/bg_fx_menu.png') no-repeat;
+    background: url('./assets/img/bg_fx_menu.png') no-repeat;
     background-position: right center;
     -moz-background-size: cover;
     background-size: cover;
@@ -280,6 +275,29 @@ screen and (max-height: 1600px) {
     }
 }
 
+.nav-hidden-list__item:hover span {
+    font-family: 'Roboto-Bold';
+    color: #000;
+    background: #ffde39;
+    -webkit-box-shadow: 2px 4px 16px -3px #000;
+    -moz-box-shadow: 2px 4px 16px -3px #000;
+    box-shadow: 2px 4px 16px -3px #000;
+}
+
+.nav-hidden-list__item:focus {
+    outline: none;
+}
+
+.nav-hidden-list__item:focus span {
+    font-family: 'Roboto-Bold';
+    color: #000;
+    outline: none;
+    background: #ffde39;
+    -webkit-box-shadow: 2px 4px 16px -3px #000;
+    -moz-box-shadow: 2px 4px 16px -3px #000;
+    box-shadow: 2px 4px 16px -3px #000;
+}
+
 .nav-hidden-list__item span {
     font-family: 'Roboto-Bold';
     font-size: 20px;
@@ -303,25 +321,6 @@ screen and (max-height: 1600px) {
         -moz-border-radius: 40px;
         border-radius: 40px;
     }
-}
-
-.nav-hidden-list__item span:hover {
-    font-family: 'Roboto-Bold';
-    color: #000;
-    background: #ffde39;
-    -webkit-box-shadow: 2px 4px 16px -3px #000;
-    -moz-box-shadow: 2px 4px 16px -3px #000;
-    box-shadow: 2px 4px 16px -3px #000;
-}
-
-.nav-hidden-list__item span:focus {
-    font-family: 'Roboto-Bold';
-    color: #000;
-    outline: none;
-    background: #ffde39;
-    -webkit-box-shadow: 2px 4px 16px -3px #000;
-    -moz-box-shadow: 2px 4px 16px -3px #000;
-    box-shadow: 2px 4px 16px -3px #000;
 }
 
 .nav-hidden-list__item.active span {
@@ -353,10 +352,6 @@ screen and (max-height: 1600px) {
         -moz-border-radius: 40px;
         border-radius: 40px;
     }
-}
-
-.nav-hidden-list__item:focus {
-    outline: none;
 }
 
 .hide-menu {
@@ -419,7 +414,7 @@ screen and (max-height: 1600px) {
     overflow: hidden;
     width: 148px;
     height: 100%;
-    background: url('./img/bg_fx_innerpage.png') no-repeat;
+    background: url('./assets/img/bg_fx_innerpage.png') no-repeat;
     background-position: right center;
     -moz-background-size: cover;
     background-size: cover;
@@ -835,14 +830,14 @@ screen and (max-height: 1600px) {
     width: 16px;
     height: 16px;
     vertical-align: middle;
-    background: url('./img/layers.png');
+    background: url('./assets/img/layers.png');
 }
 
 @media screen and (min-width: 3840px) {
     .description-text__count .icon {
         width: 24px;
         height: 24px;
-        background: url('./img/layers-big.png');
+        background: url('./assets/img/layers-big.png');
     }
 }
 
@@ -908,14 +903,14 @@ screen and (max-height: 1600px) {
 }
 
 .sort-card__title:hover .icon {
-    background: url('./img/down-arrow-black.png');
+    background: url('./assets/img/down-arrow-black.png');
 }
 
 @media screen and (min-width: 3840px) {
     .sort-card__title:hover .icon {
         width: .8em;
         height: .7em;
-        background: url('./img/down-chevron-big-black.png');
+        background: url('./assets/img/down-chevron-big-black.png');
     }
 }
 
@@ -929,14 +924,14 @@ screen and (max-height: 1600px) {
 }
 
 .sort-card__title:focus .icon {
-    background: url('./img/down-arrow.png');
+    background: url('./assets/img/down-arrow.png');
 }
 
 @media screen and (min-width: 3840px) {
     .sort-card__title:focus .icon {
         width: .8em;
         height: .7em;
-        background: url('./img/down-chevron.png');
+        background: url('./assets/img/down-chevron.png');
     }
 }
 
@@ -951,7 +946,7 @@ screen and (max-height: 1600px) {
     height: 1em;
     margin-left: .3em;
     vertical-align: middle;
-    background: url('./img/down-arrow.png');
+    background: url('./assets/img/down-arrow.png');
 }
 
 @media screen and (min-width: 1919px) {
@@ -965,7 +960,7 @@ screen and (max-height: 1600px) {
     .sort-card__title .icon {
         width: .8em;
         height: .7em;
-        background: url('./img/down-chevron.png');
+        background: url('./assets/img/down-chevron.png');
     }
 }
 
@@ -1434,14 +1429,14 @@ screen and (max-height: 1600px) {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url('./img/two-squares.png');
+    background: url('./assets/img/two-squares.png');
 }
 
 @media screen and (min-width: 3840px) {
     .collection-count__icon {
         width: 32px;
         height: 32px;
-        background: url('./img/two-squares-big.png');
+        background: url('./assets/img/two-squares-big.png');
     }
 }
 
@@ -1645,14 +1640,14 @@ body {
 }
 
 .btn:hover .money-icon {
-    background: url('./img/ruble-currency-sign-black.png');
+    background: url('./assets/img/ruble-currency-sign-black.png');
 }
 
 @media screen and (min-width: 3840px) {
     .btn:hover .money-icon {
         width: 32px;
         height: 32px;
-        background: url('./img/ruble-currency-sign-big-black.png');
+        background: url('./assets/img/ruble-currency-sign-big-black.png');
     }
 }
 
@@ -1666,14 +1661,14 @@ body {
 }
 
 .btn:focus .money-icon {
-    background: url('./img/ruble-currency-sign-black.png');
+    background: url('./assets/img/ruble-currency-sign-black.png');
 }
 
 @media screen and (min-width: 3840px) {
     .btn:focus .money-icon {
         width: 32px;
         height: 32px;
-        background: url('./img/ruble-currency-sign-big-black.png');
+        background: url('./assets/img/ruble-currency-sign-big-black.png');
     }
 }
 
@@ -1686,14 +1681,14 @@ body {
 }
 
 .btn.active .money-icon {
-    background: url('./img/ruble-currency-sign-black.png');
+    background: url('./assets/img/ruble-currency-sign-black.png');
 }
 
 @media screen and (min-width: 3840px) {
     .btn.active .money-icon {
         width: 32px;
         height: 32px;
-        background: url('./img/ruble-currency-sign-big-black.png');
+        background: url('./assets/img/ruble-currency-sign-big-black.png');
     }
 }
 
@@ -1710,14 +1705,14 @@ body {
     -moz-transition: all .15s ease-in;
     -o-transition: all .15s ease-in;
     transition: all .15s ease-in;
-    background: url('./img/ruble-currency-sign.png');
+    background: url('./assets/img/ruble-currency-sign.png');
 }
 
 @media screen and (min-width: 3840px) {
     .btn .money-icon {
         width: 32px;
         height: 32px;
-        background: url('./img/ruble-currency-sign-big-light.png');
+        background: url('./assets/img/ruble-currency-sign-big-light.png');
     }
 }
 
