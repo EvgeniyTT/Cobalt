@@ -11,14 +11,19 @@ import './CataloguePage.scss';
 const cards = [
   { title: 'New Release', name: 'Alient: Covenant', rating: 7.5, releaseDate: '203/11/24', pic: 1 },
   { title: 'Popular', name: 'Crimson Peak', rating: 7.7, releaseDate: '2010/12/24', pic: 2 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 5.5, releaseDate: '2010/11/14', pic: 3 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 8.5, releaseDate: '2010/05/09', pic: 4 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 9.1, releaseDate: '2007/01/30', pic: 5 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 6.5, releaseDate: '1995/12/31', pic: 6 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 8.1, releaseDate: '1998/04/09', pic: 7 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 9.0, releaseDate: '2015/03/11', pic: 8 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 8.4, releaseDate: '2012/04/22', pic: 9 },
-  { title: 'Lorem ipsum', name: 'Lorem ipsum', rating: 6.3, releaseDate: '2013/09/07', pic: 10 }
+  { title: 'Title1', name: 'Name1', rating: 5.5, releaseDate: '2010/11/14', pic: 3 },
+  { title: 'Title2', name: 'Name2', rating: 8.5, releaseDate: '2010/05/09', pic: 4 },
+  { title: 'Title3', name: 'Name3', rating: 9.1, releaseDate: '2007/01/30', pic: 5 },
+  { title: 'Title4', name: 'Name4', rating: 6.5, releaseDate: '1995/12/31', pic: 6 },
+  { title: 'Title5', name: 'Name5', rating: 8.1, releaseDate: '1998/04/09', pic: 7 },
+  { title: 'Title6', name: 'Name6', rating: 9.0, releaseDate: '2015/03/11', pic: 8 },
+  { title: 'Title7', name: 'Name7', rating: 8.4, releaseDate: '2012/04/22', pic: 9 },
+  { title: 'Title8', name: 'Name8', rating: 6.3, releaseDate: '2013/09/07', pic: 10 },
+  { title: 'Title9', name: 'Name9', rating: 7.0, releaseDate: '203/11/24', pic: 1 },
+  { title: 'Title10', name: 'Name10', rating: 3.7, releaseDate: '2016/12/21', pic: 2 },
+  { title: 'Title11', name: 'Name11', rating: 4.5, releaseDate: '2002/11/14', pic: 3 },
+  { title: 'Title12', name: 'Name12', rating: 3.5, releaseDate: '1994/05/09', pic: 4 },
+  { title: 'Title13', name: 'Name13', rating: 4.1, releaseDate: '1998/01/30', pic: 5 },
 ];
 
 const sortOptions = [
@@ -143,13 +148,20 @@ class CollectionPage extends Component {
             ReactDOM.findDOMNode(this.backBtn).focus();
           } else {
             ReactDOM.findDOMNode(this[`card${index - 1}`]).focus();
+            this.setActiveRow(index - 1);
           }
           break;
         case KEY_RIGHT:
-          if (index < cards.length - 1) ReactDOM.findDOMNode(this[`card${index + 1}`]).focus();
+          if (index < cards.length - 1) {
+            ReactDOM.findDOMNode(this[`card${index + 1}`]).focus();
+            this.setActiveRow(index + 1);
+          }
           break;
         case KEY_DOWN:
-          if (index <= cards.length - CARDS_IN_ROW) ReactDOM.findDOMNode(this[`card${index + CARDS_IN_ROW}`]).focus();
+          if (index <= cards.length - CARDS_IN_ROW) {
+            ReactDOM.findDOMNode(this[`card${index + CARDS_IN_ROW}`]).focus();
+            this.setActiveRow(index + CARDS_IN_ROW);
+          }
           break;
         case KEY_UP:
           if (index < 3) {
@@ -158,6 +170,7 @@ class CollectionPage extends Component {
             ReactDOM.findDOMNode(this.sortBtn).focus();
           } else if (index >= CARDS_IN_ROW) {
             ReactDOM.findDOMNode(this[`card${index - CARDS_IN_ROW}`]).focus();
+            this.setActiveRow(index - CARDS_IN_ROW);
           }
           break;
       }
@@ -257,8 +270,8 @@ class CollectionPage extends Component {
                   onKeyDown={this.handleKeyNavigation}
                   pic={card.pic}
                   ref={node => { this[`card${index}`] = node; }}
-                  style={{ transform: `translateY(${this.cardHeigth * this.state.activeRow}px)` }}
                   title={card.title}
+                  translateY={`translateY(${-(this.cardHeigth * this.state.activeRow)}px)`}
                 />
               ))}
             </div>

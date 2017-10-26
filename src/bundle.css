@@ -562,9 +562,15 @@ screen and (max-height: 1600px) {
     height: 300px;
     margin: 0 10px 20px 10px;
     -webkit-transition: all .15s ease-in;
+    -webkit-transition: -webkit-transform .5s linear;
     -moz-transition: all .15s ease-in;
+    -moz-transition: transform .5s linear, -moz-transform .5s linear;
     -o-transition: all .15s ease-in;
+    -o-transition: -o-transform .5s linear;
     transition: all .15s ease-in;
+    transition: -webkit-transform .5s linear;
+    transition: transform .5s linear;
+    transition: transform .5s linear, -webkit-transform .5s linear, -moz-transform .5s linear, -o-transform .5s linear;
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
@@ -874,7 +880,7 @@ screen and (max-height: 1600px) {
     font-family: 'Roboto-Bold';
     font-size: 1em;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     left: 0;
     display: inline-block;
@@ -1091,7 +1097,7 @@ screen and (max-height: 1600px) {
 
 .collection-wrapper .collection-inner-title {
     font-size: 20px;
-    display: none;
+    display: block;
 }
 
 @media screen and (min-width: 2800px) {
@@ -1172,6 +1178,12 @@ screen and (max-height: 1600px) {
     width: 37em;
     height: 24.6em;
     margin: 0 20px;
+    -webkit-transition: -webkit-transform .5s linear;
+    -moz-transition: transform .5s linear, -moz-transform .5s linear;
+    -o-transition: -o-transform .5s linear;
+    transition: -webkit-transform .5s linear;
+    transition: transform .5s linear;
+    transition: transform .5s linear, -webkit-transform .5s linear, -moz-transform .5s linear, -o-transform .5s linear;
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
