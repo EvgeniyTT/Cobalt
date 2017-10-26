@@ -1,0 +1,234 @@
+// START: nav
+.nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+  }
+  .nav-hidden {
+    width: 44em;
+    height: 100%;
+    // add display none if nav menu is hidden
+    display: block;
+    background: url('../assets/img/bg_fx_menu.png') no-repeat;
+    background-position: right center;
+    background-size: cover;
+    left: 3.4em;
+    top: 0;
+    position: absolute;
+    z-index: 9;
+    @media screen and (max-width: 3840px) {
+      width: 90em;
+      left: 6em;
+    }
+    @media screen and (max-width: 3355px) {
+      width: 89em;
+      left: 6em;
+    }
+    @media screen and (max-width: 3200px) {
+      left: 1.5em;
+      width: 58em;
+    }
+    @media screen and (max-width: 2560px), screen and (max-height: 1600px) {
+      left: 0.8em;
+      width: 64.2em;
+    }
+    @media screen and (max-width: 2200px) {
+      left: 2.4em;
+      width: 50em;
+    }
+    @media screen and (max-width: 1920px) {
+      left: 3.5em;
+      width: 44em;
+    }
+    @media screen and (max-width: 1800px) {
+      left: 4em;
+      width: 41em;
+    }
+    @media screen and (max-width: 1550px) {
+      left: 2.1em;
+      width: 37em;
+    }
+    @media screen and (max-width: 1366px) {
+      left: 2.1em;
+    }
+    @media screen and (max-width: 1320px) {
+      left: 3.3em;
+      width: 31em;
+    }
+  
+    &__holder {
+      font-size: 16px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @media screen and (min-width: 3200px) {
+        font-size: 40px;
+      }
+    }
+    &-title {
+      color: color('primary');
+      font-family: 'Roboto-Bold';
+      font-size: 2.2em;
+      display: block;
+      margin-bottom: 80px;
+      padding-left: 15px;
+    }
+    &-list {
+      &__item {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        @media screen and (min-width: 3200px) {
+          margin-bottom: 25px;
+        }
+        span {
+          border-radius: 20px;
+          padding: 10px 15px;
+          font-size: 20px;
+          display: inline-block;
+          font-family: 'Roboto-Bold';
+          color: color('gray');
+          transition: all 0.15s ease-in;
+          @media screen and (min-width: 3200px) {
+            font-size: 40px;
+            padding: 20px 30px;
+            border-radius: 40px;
+          }
+          &:hover {
+            background: color('active');
+            color: #000;
+            font-family: 'Roboto-Bold';
+            box-shadow: 2px 4px 16px -3px #000;
+          }
+          &:focus {
+            outline: none;
+            background: color('active');
+            color: #000;
+            font-family: 'Roboto-Bold';
+            box-shadow: 2px 4px 16px -3px #000;
+          }
+        }
+        &.active {
+          span {
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 20px;
+            display: inline-block;
+            font-family: 'Roboto-Bold';
+            color: color('gray');
+            transition: all 0.15s ease-in;
+            background: color('active');
+            color: #000;
+            font-family: 'Roboto-Bold';
+            box-shadow: 2px 4px 16px -3px #000;
+            @media screen and (min-width: 3200px) {
+              font-size: 40px;
+              padding: 20px 30px;
+              border-radius: 40px;
+            }
+          }
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .hide-menu {
+    animation: hideMenu 2s ease-in-out alternate forwards;
+  }
+  
+  @keyframes hideMenu {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-300%);
+    }
+  }
+  .nav {
+    width: 148px;
+    height: 100%;
+    overflow: hidden;
+    background: url('../assets/img/bg_fx_innerpage.png') no-repeat;
+    display: inline-block;
+    background-size: cover;
+    background-position: right center;
+    @media screen and (min-width: 3200px) {
+      width: 290px;
+    }
+    @media screen and (max-width: 1550px) {
+      width: 115px;
+    }
+    &-arrow {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background: #242c33;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 101;
+      border-radius: 25px;
+      box-shadow: 2px 4px 16px -3px #000;
+      @media screen and (min-width: 1919px) {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+      }
+      @media screen and (min-width: 3200px) {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #ff0;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 17px;
+        width: 11px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(-45deg);
+        @media screen and (min-width: 1919px) {
+          top: 25px;
+          left: 22px;
+        }
+        @media screen and (min-width: 3200px) {
+          top: 40px;
+          left: 32px;
+          width: 32px;
+          height: 3px;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 27px;
+        left: 17px;
+        width: 11px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(45deg);
+        @media screen and (min-width: 1919px) {
+          top: 32px;
+          left: 22px;
+        }
+        @media screen and (min-width: 3200px) {
+          top: 61px;
+          left: 32px;
+          width: 32px;
+          height: 3px;
+        }
+      }
+    }
+  }
+  // END: nav
+  
