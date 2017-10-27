@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import MenuOption from '../MenuOption/MenuOption';
 import { KEY_LEFT, KEY_UP, KEY_DOWN } from '../../utils/keys';
-import './Menu.scss';
 
 const menuOptions = [
   { option: 'Featured' },

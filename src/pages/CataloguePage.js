@@ -7,8 +7,6 @@ import Clock from '../components/Clock/Clock';
 import MenuViewCollection from '../components/MenuView/MenuViewCollection';
 import MenuViewDefault from '../components/MenuView/MenuViewDefault';
 import { KEY_LEFT, KEY_RIGHT } from '../utils/keys';
-// import './CataloguePage.scss';
-// import './CollectionPage.scss';
 
 const collections = [
   { name: 'Supperheroes', count: '22' },
@@ -68,18 +66,21 @@ class CataloguePage extends Component {
 
   renderSelectedOption = () => (
     this.state.selectedOption === 'Collections'
-      ? collections.map((collection, index) => (
-        <MenuViewCollection
-          count={collection.count}
-          index={index}
-          isShowMenu={this.state.isShowMenu}
-          key={collection.name}
-          name={collection.name}
-          ref={node => { this[`collectionBtn${index}`] = node; }}
-          onKeyDown={this.handleCollectionNavigation}
-          selectedCollectionIndex={this.state.selectedCollectionIndex}
-          setCurrentPage={this.props.setCurrentPage}
-        />))
+      ?
+        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}> 
+          {collections.map((collection, index) => (
+            <MenuViewCollection
+              count={collection.count}
+              index={index}
+              isShowMenu={this.state.isShowMenu}
+              key={collection.name}
+              name={collection.name}
+              ref={node => { this[`collectionBtn${index}`] = node; }}
+              onKeyDown={this.handleCollectionNavigation}
+              selectedCollectionIndex={this.state.selectedCollectionIndex}
+              setCurrentPage={this.props.setCurrentPage}
+            />))}
+        </div>
       : <MenuViewDefault option={this.state.selectedOption} />
   );
 
@@ -105,13 +106,10 @@ class CataloguePage extends Component {
       <div className="wrapper">
         <div className="wrapper__sub" />
         <Clock />
-        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
-          {this.renderSelectedOption()}
-        </div>
+        {this.renderSelectedOption()}
       </div>
     ]);
   }
 }
 
 export default CataloguePage;
-

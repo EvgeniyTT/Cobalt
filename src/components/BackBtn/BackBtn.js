@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { KEY_ENTER } from '../../utils/keys';
-// import './BackBtn.scss';
 
 class BackBtn extends Component {
   handleKeyDown = event => {

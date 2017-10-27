@@ -5,8 +5,6 @@ import BackBtn from '../components/BackBtn/BackBtn';
 import Clock from '../components/Clock/Clock';
 import Card from '../components/Card/Card';
 import { KEY_ENTER, KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN } from '../utils/keys';
-import './CollectionPage.scss';
-import './CataloguePage.scss';
 
 const cards = [
   { title: 'New Release', name: 'Alient: Covenant', rating: 7.5, releaseDate: '203/11/24', pic: 1 },
