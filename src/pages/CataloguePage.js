@@ -80,30 +80,68 @@ class CataloguePage extends Component {
     }
   }
 
-  renderSelectedOption = () => (
-    this.state.selectedOption === 'Collections'
-      ?
-        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
-          {collections.map((collection, index) => (
-            <MenuViewCollection
-              count={collection.count}
-              index={index}
-              isShowMenu={this.state.isShowMenu}
-              key={collection.name}
-              name={collection.name}
-              ref={node => { this[`collectionBtn${index}`] = node; }}
-              onKeyDown={this.handleCollectionNavigation}
-              selectedCollectionIndex={this.state.selectedCollectionIndex}
-              setCurrentPage={this.props.setCurrentPage}
-            />))}
-        </div>
-      : (() => (
-        <div className={`catalogue-wrapper ${this.state.selectedOption}`} id={this.state.selectedOption} name={this.state.selectedOption}>
-          <div className="catalogue-inner-title">
-            <span className="nav-inner-title">{this.state.selectedOption}</span>
-          </div>
-        </div>))()
-  );
+  renderSelectedOption = () => {
+    switch (this.state.selectedOption) {
+      case 'Collections':
+        return (
+          <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
+            {collections.map((collection, index) => (
+              <MenuViewCollection
+                count={collection.count}
+                index={index}
+                isShowMenu={this.state.isShowMenu}
+                key={collection.name}
+                name={collection.name}
+                ref={node => { this[`collectionBtn${index}`] = node; }}
+                onKeyDown={this.handleCollectionNavigation}
+                selectedCollectionIndex={this.state.selectedCollectionIndex}
+                setCurrentPage={this.props.setCurrentPage}
+              />))}
+          </div>);
+      case 'Featured':
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">Featured</span>
+            </div>
+          </div>);
+      case 'Recently Added':
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">Recently Added</span>
+            </div>
+          </div>);
+      case 'Best of Catch-Up':
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">Best of Catch-Up</span>
+            </div>
+          </div>);
+      case 'Subscriptions':
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">Subscriptions</span>
+            </div>
+          </div>);
+      case 'Browse':
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">Subscriptions</span>
+            </div>
+          </div>);
+      default:
+        return (
+          <div className={`catalogue-wrapper ${this.state.selectedOption}`} id={this.state.selectedOption} name={this.state.selectedOption}>
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">{this.state.selectedOption}</span>
+            </div>
+          </div>);
+    }
+  };
 
   render() {
     return ([

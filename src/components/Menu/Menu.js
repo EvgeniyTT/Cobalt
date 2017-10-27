@@ -9,7 +9,7 @@ const menuOptions = [
   { option: 'Recently Added' },
   { option: 'Best of Catch-Up' },
   { option: 'Subscriptions' },
-  { option: 'Collections', link: '/collections' },
+  { option: 'Collections' },
   { option: 'Browse' }
 ];
 
