@@ -97,12 +97,12 @@ class CataloguePage extends Component {
               setCurrentPage={this.props.setCurrentPage}
             />))}
         </div>
-      :
+      : (() => (
         <div className={`catalogue-wrapper ${this.state.selectedOption}`} id={this.state.selectedOption} name={this.state.selectedOption}>
           <div className="catalogue-inner-title">
             <span className="nav-inner-title">{this.state.selectedOption}</span>
           </div>
-        </div>
+        </div>))()
   );
 
   render() {
