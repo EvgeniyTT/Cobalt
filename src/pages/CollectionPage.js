@@ -236,7 +236,7 @@ class CollectionPage extends Component {
                   role="button"
                   tabIndex="1"
                 >
-                  <span>Sort: <em>{ sortOptions.find(option => option.sortBy === this.state.sorting).text }</em></span>
+                  <span>Sort: <span>{ sortOptions.find(option => option.sortBy === this.state.sorting).text }</span></span>
                   <span className="icon" />
                 </div>
                 <div className={`sort-card-list ${this.state.isShowSortOptions ? 'active' : ''} `}>
