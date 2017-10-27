@@ -144,13 +144,13 @@ class CollectionPage extends Component {
         case KEY_LEFT:
           if (index === 0) {
             ReactDOM.findDOMNode(this.backBtn).focus();
-          } else {
+          } else if ((index) % CARDS_IN_ROW !== 0) {
             ReactDOM.findDOMNode(this[`card${index - 1}`]).focus();
             this.setActiveRow(index - 1);
           }
           break;
         case KEY_RIGHT:
-          if (index < cards.length - 1) {
+          if ((index < (cards.length - 1)) && ((index + 1) % CARDS_IN_ROW !== 0)) {
             ReactDOM.findDOMNode(this[`card${index + 1}`]).focus();
             this.setActiveRow(index + 1);
           }

@@ -18,7 +18,7 @@ class MenuViewCollection extends Component {
   getTranslateValue = () => {
     return this.props.isShowMenu
       ? 0
-      : -((this.props.selectedCollectionIndex * this.state.width) - (this.state.width / 1.7));
+      : -((this.props.selectedCollectionIndex * this.state.width) - (this.state.width / 2.5));
   }
 
   handleKeyDown = event => {

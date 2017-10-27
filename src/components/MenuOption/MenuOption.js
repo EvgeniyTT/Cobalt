@@ -1,10 +1,10 @@
 /* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from 'react';
-import { KEY_ENTER } from '../../utils/keys';
+import { KEY_ENTER, KEY_RIGHT } from '../../utils/keys';
 
 class MenuOption extends Component {
   handleKeyDown = event => {
-    if (event.keyCode === KEY_ENTER) {
+    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_RIGHT) {
       this.props.handeOptionSelect && this.props.handeOptionSelect();
     } else {
       this.props.onKeyDown && this.props.onKeyDown(event);
