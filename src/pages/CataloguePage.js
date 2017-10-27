@@ -98,7 +98,7 @@ class CataloguePage extends Component {
             />))}
         </div>
       :
-        <div className="catalogue-wrapper" id={this.state.selectedOption}>
+        <div className={`catalogue-wrapper ${this.state.selectedOption}`} id={this.state.selectedOption} name={this.state.selectedOption}>
           <div className="catalogue-inner-title">
             <span className="nav-inner-title">{this.state.selectedOption}</span>
           </div>
