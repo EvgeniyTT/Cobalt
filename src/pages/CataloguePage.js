@@ -53,7 +53,11 @@ class CataloguePage extends Component {
         this.showMenu();
         break;
       case KEY_RIGHT:
-        ReactDOM.findDOMNode(this.collectionBtn0).focus();
+        if (ReactDOM.findDOMNode(this.collectionBtn0)) {
+          ReactDOM.findDOMNode(this.collectionBtn0).focus();
+        } else {
+          this.setState({ isShowMenu: true, isFocusMenu: true });
+        }
         break;
     }
   }
