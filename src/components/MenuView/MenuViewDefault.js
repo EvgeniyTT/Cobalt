@@ -8,6 +8,9 @@ class MenuViewDefault extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('RECEIVE PROPS');
+    console.log('nextProps: ', nextProps);
+    console.log('this.state.option: ', this.state.option);
     this.setState({ option: nextProps.option });
   }
 
