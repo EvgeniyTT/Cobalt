@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 import Menu from '../components/Menu/Menu';
 import BackBtn from '../components/BackBtn/BackBtn';
 import Clock from '../components/Clock/Clock';
-import MenuViewCollection from '../components/MenuView/MenuViewCollection';
-import MenuViewDefault from '../components/MenuView/MenuViewDefault';
+import MenuViewCollection from '../components/MenuViewCollection/MenuViewCollection';
 import { KEY_LEFT, KEY_RIGHT, KEY_ENTER } from '../utils/keys';
 
 const collections = [
@@ -99,7 +98,7 @@ class CataloguePage extends Component {
             />))}
         </div>
       :
-        <div className="catalogue-wrapper">
+        <div className="catalogue-wrapper" id={this.state.selectedOption}>
           <div className="catalogue-inner-title">
             <span className="nav-inner-title">{this.state.selectedOption}</span>
           </div>
