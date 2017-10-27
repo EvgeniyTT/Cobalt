@@ -10,8 +10,13 @@ class MenuViewCollection extends Component {
   }
 
   componentDidMount() {
-    if (this.state.width !== ReactDOM.findDOMNode(this).getBoundingClientRect().width) {
-      this.setState({ width: ReactDOM.findDOMNode(this).getBoundingClientRect().width });
+    const { width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
+    const style = window.getComputedStyle(ReactDOM.findDOMNode(this));
+    const marginLeft = parseFloat(style.getPropertyValue('margin-left'));
+    const marginRight = parseFloat(style.getPropertyValue('margin-right'));
+    const widthWithMargin = width + marginLeft + marginRight;
+    if (this.state.width !== widthWithMargin) {
+      this.setState({ width: widthWithMargin });
     }
   }
 

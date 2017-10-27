@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 
 class MenuViewDefault extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="catalogue-wrapper">

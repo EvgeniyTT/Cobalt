@@ -84,7 +84,7 @@ class CataloguePage extends Component {
   renderSelectedOption = () => (
     this.state.selectedOption === 'Collections'
       ?
-        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}> 
+        <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
           {collections.map((collection, index) => (
             <MenuViewCollection
               count={collection.count}

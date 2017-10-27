@@ -973,7 +973,7 @@ screen and (max-height: 1600px) {
 }
 
 .sort-card__title span {
-    display: inline-block;
+    display: inline;
 }
 
 .sort-card__title .icon {
@@ -1727,9 +1727,16 @@ body {
 
 @media screen and (min-width: 3840px) {
     .btn:hover .money-icon {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         background: url('./assets/img/ruble-currency-sign-big-black.png');
+    }
+}
+
+@media screen and (min-width: 2048px) {
+    .btn:hover .money-icon {
+        width: 15px;
+        height: 15px;
     }
 }
 
@@ -1746,10 +1753,17 @@ body {
     background: url('./assets/img/ruble-currency-sign-black.png');
 }
 
+@media screen and (min-width: 2048px) {
+    .btn:focus .money-icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+
 @media screen and (min-width: 3840px) {
     .btn:focus .money-icon {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         background: url('./assets/img/ruble-currency-sign-big-black.png');
     }
 }
@@ -1766,10 +1780,17 @@ body {
     background: url('./assets/img/ruble-currency-sign-black.png');
 }
 
+@media screen and (min-width: 2048px) {
+    .btn.active .money-icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+
 @media screen and (min-width: 3840px) {
     .btn.active .money-icon {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         background: url('./assets/img/ruble-currency-sign-big-black.png');
     }
 }
@@ -1781,20 +1802,36 @@ body {
 .btn .money-icon {
     display: block;
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     -webkit-transition: all .15s ease-in;
     -moz-transition: all .15s ease-in;
     -o-transition: all .15s ease-in;
     transition: all .15s ease-in;
     background: url('./assets/img/ruble-currency-sign.png');
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (min-width: 2048px) {
+    .btn .money-icon {
+        width: 15px;
+        height: 15px;
+    }
 }
 
 @media screen and (min-width: 3840px) {
     .btn .money-icon {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         background: url('./assets/img/ruble-currency-sign-big-light.png');
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .btn .money-icon {
+        width: 11px;
+        height: 11px;
     }
 }
 
