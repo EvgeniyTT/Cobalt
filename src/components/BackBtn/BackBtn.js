@@ -5,9 +5,8 @@ class BackBtn extends Component {
   handleKeyDown = event => {
     if (event.keyCode === KEY_ENTER) {
       this.props.setCurrentPage && this.props.setCurrentPage(Number(this.props.pageNum) || 0);
-    } else {
-      this.props.onKeyDown && this.props.onKeyDown(event);
     }
+    this.props.onKeyDown && this.props.onKeyDown(event);
   }
 
   handleClick = () => {

@@ -15,9 +15,7 @@ class MenuOption extends Component {
     const {
       handeOptionSelect,
       onOptionFocus,
-      onKeyDown,
-      option,
-      selectedOption
+      option
     } = this.props;
     return (
       <div

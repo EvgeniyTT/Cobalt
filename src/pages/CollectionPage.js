@@ -95,7 +95,7 @@ class CollectionPage extends Component {
   }
 
   handleKeyNavigation = (event, index) => {
-    if (this.buyBtn == document.activeElement) {
+    if (this.buyBtn === document.activeElement) {
       switch (event.keyCode) {
         case KEY_LEFT:
           ReactDOM.findDOMNode(this.backBtn).focus();
@@ -113,7 +113,7 @@ class CollectionPage extends Component {
           ReactDOM.findDOMNode(this.buyBtn).focus();
           break;
       }
-    } else if (this.sortBtn == document.activeElement) {
+    } else if (this.sortBtn === document.activeElement) {
       switch (event.keyCode) {
         case KEY_LEFT:
           ReactDOM.findDOMNode(this.buyBtn).focus();

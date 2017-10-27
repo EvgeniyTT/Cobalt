@@ -6,7 +6,7 @@ import BackBtn from '../components/BackBtn/BackBtn';
 import Clock from '../components/Clock/Clock';
 import MenuViewCollection from '../components/MenuView/MenuViewCollection';
 import MenuViewDefault from '../components/MenuView/MenuViewDefault';
-import { KEY_LEFT, KEY_RIGHT } from '../utils/keys';
+import { KEY_LEFT, KEY_RIGHT, KEY_ENTER } from '../utils/keys';
 
 const collections = [
   { name: 'Supperheroes', count: '22' },
@@ -47,10 +47,23 @@ class CataloguePage extends Component {
     this.setState({ isShowMenu: true, isFocusMenu: true });
   }
 
+  handleBackBtnNavigation = event => {
+    switch (event.keyCode) {
+      case KEY_ENTER:
+        this.showMenu();
+        break;
+      case KEY_RIGHT:
+        ReactDOM.findDOMNode(this.collectionBtn0).focus();
+        break;
+    }
+  }
+
   handleCollectionNavigation = (event, index) => {
     switch (event.keyCode) {
       case KEY_LEFT:
-        if (index > 0) {
+        if (index === 0) {
+          this.focusBackBtn();
+        } else {
           ReactDOM.findDOMNode(this[`collectionBtn${index - 1}`]).focus();
           this.setState({ selectedCollectionIndex: index - 1 });
         }
@@ -90,7 +103,7 @@ class CataloguePage extends Component {
         <div className="nav">
           <BackBtn
             onClick={this.showMenu}
-            onKeyDown={this.showMenu}
+            onKeyDown={this.handleBackBtnNavigation}
             ref={node => { this.backBtn = node; }}
           />
         </div>
