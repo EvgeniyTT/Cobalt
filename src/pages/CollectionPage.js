@@ -47,6 +47,9 @@ class CollectionPage extends Component {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this.buyBtn).focus();
+    const rect = ReactDOM.findDOMNode(this.card0).getBoundingClientRect();
+    const style = window.getComputedStyle(ReactDOM.findDOMNode(this.card0));
+    this.cardHeight = getElementSize(rect, style).height;
   }
 
   setActiveRow = index => {
@@ -269,6 +272,7 @@ class CollectionPage extends Component {
                   pic={card.pic}
                   ref={node => { this[`card${index}`] = node; }}
                   title={card.title}
+                  translateY={`translateY(${-(this.cardHeight * this.state.activeRow)}px)`}
                 />
               ))}
             </div>
