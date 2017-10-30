@@ -80,10 +80,6 @@ class CataloguePage extends Component {
     }
   }
 
-  renderSelectedOption = () => {
-
-  };
-
   render() {
     return ([
       <div className="nav-wrapper">
@@ -106,9 +102,10 @@ class CataloguePage extends Component {
       <div className="wrapper">
         <div className="wrapper__sub" />
         <Clock />
-        {
-          this.state.selectedOption === 'Collections'
-            ? (
+        { (() => {
+          switch (this.state.selectedOption) {
+          case 'Collections':
+            return (
               <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
                 {collections.map((collection, index) => (
                   <MenuViewCollection
@@ -122,14 +119,48 @@ class CataloguePage extends Component {
                     selectedCollectionIndex={this.state.selectedCollectionIndex}
                     setCurrentPage={this.props.setCurrentPage}
                   />))}
-              </div>)
-            : (
+              </div>
+            );
+          case 'Featured':
+          case 'Best of Catch-Up':
+            return (
+              <span className="catalogue-wrapper">
+                <span className="catalogue-inner-title">
+                  <span className="nav-inner-title">{this.state.selectedOption}</span>
+                </span>
+              </span>);
+          default:
+            return (
               <div className="catalogue-wrapper">
                 <div className="catalogue-inner-title">
                   <span className="nav-inner-title">{this.state.selectedOption}</span>
                 </div>
-              </div>)
+              </div>);
         }
+
+          // this.state.selectedOption === 'Collections'
+          //   ? (
+          //     <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
+          //       {collections.map((collection, index) => (
+          //         <MenuViewCollection
+          //           count={collection.count}
+          //           index={index}
+          //           isShowMenu={this.state.isShowMenu}
+          //           key={collection.name}
+          //           name={collection.name}
+          //           ref={node => { this[`collectionBtn${index}`] = node; }}
+          //           onKeyDown={this.handleCollectionNavigation}
+          //           selectedCollectionIndex={this.state.selectedCollectionIndex}
+          //           setCurrentPage={this.props.setCurrentPage}
+          //         />))}
+          //     </div>)
+          //   : (
+          //     <div className="catalogue-wrapper">
+          //       <div className="catalogue-inner-title">
+          //         <span className="nav-inner-title">{this.state.selectedOption}</span>
+          //       </div>
+          //     </div>)
+        })()}
       </div>
     ]);
   }
