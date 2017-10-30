@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { KEY_ENTER } from '../../utils/keys';
+import { getElementSize } from '../../utils/size';
 
 class MenuViewCollection extends Component {
   constructor(props) {
@@ -10,13 +11,12 @@ class MenuViewCollection extends Component {
   }
 
   componentDidMount() {
-    const { width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
+    const rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
     const style = window.getComputedStyle(ReactDOM.findDOMNode(this));
-    const marginLeft = parseFloat(style.getPropertyValue('margin-left'));
-    const marginRight = parseFloat(style.getPropertyValue('margin-right'));
-    const widthWithMargin = width + marginLeft + marginRight;
-    if (this.state.width !== widthWithMargin) {
-      this.setState({ width: widthWithMargin });
+    const { width } = getElementSize(rect, style);
+    console.log('COLL WIDTH: ', width);
+    if (this.state.width !== width) {
+      this.setState({ width });
     }
   }
 

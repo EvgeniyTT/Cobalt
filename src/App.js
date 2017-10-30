@@ -17,11 +17,11 @@ class App extends Component {
     return (() => {
       switch (this.state.currentPageNum) {
         case 0:
-          return <CataloguePage setCurrentPage={this.setCurrentPage} />;
+          return <CataloguePage setCurrentPage={this.setCurrentPage} key="catalog" />;
         case 1:
-          return <CollectionPage setCurrentPage={this.setCurrentPage} />;
+          return <CollectionPage setCurrentPage={this.setCurrentPage} key="collection" />;
         default:
-          return <CataloguePage setCurrentPage={this.setCurrentPage} />;
+          return <CataloguePage setCurrentPage={this.setCurrentPage} key="defaultCatalog" />;
       }
     })();
   }

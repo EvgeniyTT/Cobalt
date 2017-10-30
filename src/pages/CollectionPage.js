@@ -5,6 +5,7 @@ import BackBtn from '../components/BackBtn/BackBtn';
 import Clock from '../components/Clock/Clock';
 import Card from '../components/Card/Card';
 import { KEY_ENTER, KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN } from '../utils/keys';
+import { getElementSize } from '../utils/size';
 
 const cards = [
   { title: 'New Release', name: 'Alient: Covenant', rating: 7.5, releaseDate: '203/11/24', pic: 1 },
@@ -35,7 +36,7 @@ const CARDS_IN_ROW = 5;
 class CollectionPage extends Component {
   constructor(props) {
     super(props);
-    this.cardHeigth = 0;
+    this.cardHeight = 0;
     this.state = {
       activeRow: 0,
       isShowBuyBtn: true,
@@ -46,7 +47,10 @@ class CollectionPage extends Component {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this.buyBtn).focus();
-    this.cardHeigth = ReactDOM.findDOMNode(this.card0).getBoundingClientRect().height;
+    const rect = ReactDOM.findDOMNode(this.card0).getBoundingClientRect();
+    const style = window.getComputedStyle(ReactDOM.findDOMNode(this.card0));
+    this.cardHeight = getElementSize(rect, style).height;
+    console.log('CARD Height: ', this.cardHeight);
   }
 
   setActiveRow = index => {
@@ -156,7 +160,7 @@ class CollectionPage extends Component {
           }
           break;
         case KEY_DOWN:
-          if (index <= cards.length - CARDS_IN_ROW) {
+          if (index < cards.length - CARDS_IN_ROW) {
             ReactDOM.findDOMNode(this[`card${index + CARDS_IN_ROW}`]).focus();
             this.setActiveRow(index + CARDS_IN_ROW);
           }
@@ -269,7 +273,7 @@ class CollectionPage extends Component {
                   pic={card.pic}
                   ref={node => { this[`card${index}`] = node; }}
                   title={card.title}
-                  translateY={`translateY(${-(this.cardHeigth * this.state.activeRow)}px)`}
+                  translateY={`translateY(${-(this.cardHeight * this.state.activeRow)}px)`}
                 />
               ))}
             </div>

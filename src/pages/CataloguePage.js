@@ -1,6 +1,6 @@
 /* eslint default-case: 0 */
 import React, { Component } from 'react';
-import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+import ReactDOM from 'react-dom';
 import Menu from '../components/Menu/Menu';
 import BackBtn from '../components/BackBtn/BackBtn';
 import Clock from '../components/Clock/Clock';
@@ -80,6 +80,43 @@ class CataloguePage extends Component {
     }
   }
 
+  renderSelectedOption = () => {
+    switch (this.state.selectedOption) {
+      case 'Collections':
+        return (
+          <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
+            {collections.map((collection, index) => (
+              <MenuViewCollection
+                count={collection.count}
+                index={index}
+                isShowMenu={this.state.isShowMenu}
+                key={collection.name}
+                name={collection.name}
+                ref={node => { this[`collectionBtn${index}`] = node; }}
+                onKeyDown={this.handleCollectionNavigation}
+                selectedCollectionIndex={this.state.selectedCollectionIndex}
+                setCurrentPage={this.props.setCurrentPage}
+              />))}
+          </div>
+        );
+      case 'Featured': // hack to force Cobalt re-render similar components
+      case 'Best of Catch-Up':
+        return (
+          <span className="catalogue-wrapper">
+            <span className="catalogue-inner-title">
+              <span className="nav-inner-title">{this.state.selectedOption}</span>
+            </span>
+          </span>);
+      default:
+        return (
+          <div className="catalogue-wrapper">
+            <div className="catalogue-inner-title">
+              <span className="nav-inner-title">{this.state.selectedOption}</span>
+            </div>
+          </div>);
+    }
+  }
+
   render() {
     return ([
       <div className="nav-wrapper">
@@ -102,65 +139,7 @@ class CataloguePage extends Component {
       <div className="wrapper">
         <div className="wrapper__sub" />
         <Clock />
-        { (() => {
-          switch (this.state.selectedOption) {
-          case 'Collections':
-            return (
-              <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
-                {collections.map((collection, index) => (
-                  <MenuViewCollection
-                    count={collection.count}
-                    index={index}
-                    isShowMenu={this.state.isShowMenu}
-                    key={collection.name}
-                    name={collection.name}
-                    ref={node => { this[`collectionBtn${index}`] = node; }}
-                    onKeyDown={this.handleCollectionNavigation}
-                    selectedCollectionIndex={this.state.selectedCollectionIndex}
-                    setCurrentPage={this.props.setCurrentPage}
-                  />))}
-              </div>
-            );
-          case 'Featured':
-          case 'Best of Catch-Up':
-            return (
-              <span className="catalogue-wrapper">
-                <span className="catalogue-inner-title">
-                  <span className="nav-inner-title">{this.state.selectedOption}</span>
-                </span>
-              </span>);
-          default:
-            return (
-              <div className="catalogue-wrapper">
-                <div className="catalogue-inner-title">
-                  <span className="nav-inner-title">{this.state.selectedOption}</span>
-                </div>
-              </div>);
-        }
-
-          // this.state.selectedOption === 'Collections'
-          //   ? (
-          //     <div className={`collection-wrapper ${this.state.isShowMenu ? '' : 'push-collection'}`}>
-          //       {collections.map((collection, index) => (
-          //         <MenuViewCollection
-          //           count={collection.count}
-          //           index={index}
-          //           isShowMenu={this.state.isShowMenu}
-          //           key={collection.name}
-          //           name={collection.name}
-          //           ref={node => { this[`collectionBtn${index}`] = node; }}
-          //           onKeyDown={this.handleCollectionNavigation}
-          //           selectedCollectionIndex={this.state.selectedCollectionIndex}
-          //           setCurrentPage={this.props.setCurrentPage}
-          //         />))}
-          //     </div>)
-          //   : (
-          //     <div className="catalogue-wrapper">
-          //       <div className="catalogue-inner-title">
-          //         <span className="nav-inner-title">{this.state.selectedOption}</span>
-          //       </div>
-          //     </div>)
-        })()}
+        { this.renderSelectedOption()}
       </div>
     ]);
   }

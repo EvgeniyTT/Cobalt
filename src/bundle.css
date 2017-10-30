@@ -1723,6 +1723,8 @@ body {
 
 .btn:hover .money-icon {
     background: url('./assets/img/ruble-currency-sign-black.png');
+    -moz-background-size: contain;
+    background-size: contain;
 }
 
 @media screen and (min-width: 3840px) {
@@ -1751,6 +1753,8 @@ body {
 
 .btn:focus .money-icon {
     background: url('./assets/img/ruble-currency-sign-black.png');
+    -moz-background-size: contain;
+    background-size: contain;
 }
 
 @media screen and (min-width: 2048px) {
@@ -1809,8 +1813,8 @@ body {
     -o-transition: all .15s ease-in;
     transition: all .15s ease-in;
     background: url('./assets/img/ruble-currency-sign.png');
-    -moz-background-size: cover;
-    background-size: cover;
+    -moz-background-size: contain;
+    background-size: contain;
 }
 
 @media screen and (min-width: 2048px) {
