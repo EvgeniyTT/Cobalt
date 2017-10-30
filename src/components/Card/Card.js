@@ -8,9 +8,8 @@ class Card extends Component {
         className="card"
         name="card"
         onKeyDown={event => this.props.onKeyDown(event, this.props.index)}
-        style={{ transform: this.props.translateY }}
         role="button"
-        tabIndex="1"
+        tabIndex="-1"
       >
         <div className={`card-body body-bg${this.props.pic}`}>
             <span className="card-title">{this.props.title}</span>
