@@ -157,10 +157,7 @@ class CollectionPage extends Component {
           break;
         case KEY_DOWN:
           if (index < cards.length - CARDS_IN_ROW) {
-            const x = window.scrollX;
-            const y = window.scrollY;
             ReactDOM.findDOMNode(this[`card${index + CARDS_IN_ROW}`]).focus();
-            
             this.setActiveRow(index + CARDS_IN_ROW);
           }
           break;
@@ -170,10 +167,7 @@ class CollectionPage extends Component {
           } else if (index === 3 || index === 4) {
             ReactDOM.findDOMNode(this.sortBtn).focus();
           } else if (index >= CARDS_IN_ROW) {
-            const x = window.scrollX;
-            const y = window.scrollY;
             ReactDOM.findDOMNode(this[`card${index - CARDS_IN_ROW}`]).focus();
-            window.scrollTo(x, y);
             this.setActiveRow(index - CARDS_IN_ROW);
           }
           break;
