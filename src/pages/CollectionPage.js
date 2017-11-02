@@ -46,10 +46,16 @@ class CollectionPage extends Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this.buyBtn).focus();
-    const rect = ReactDOM.findDOMNode(this.card0).getBoundingClientRect();
-    const style = window.getComputedStyle(ReactDOM.findDOMNode(this.card0));
-    this.cardHeight = getElementSize(rect, style).height;
+    this.props.setCollectionUnmounted(false);
+    this.initialSettings();
+  }
+
+  componentDidUpdate = () => {
+    this.initialSettings();
+  }
+
+  componentWillUnmount = () => {
+    this.props.setCollectionUnmounted(true);
   }
 
   setActiveRow = index => {
@@ -58,6 +64,17 @@ class CollectionPage extends Component {
 
   setSortingCards = sorting => {
     this.setState({ sorting });
+  }
+
+  initialSettings = () => {
+    const focusedElement = document.querySelector(':focus');
+    if (this.buyBtn && !focusedElement) ReactDOM.findDOMNode(this.buyBtn).focus();
+
+    if (this.card0 && !this.cardHeight) {
+      const rect = ReactDOM.findDOMNode(this.card0).getBoundingClientRect();
+      const style = window.getComputedStyle(ReactDOM.findDOMNode(this.card0));
+      this.cardHeight = getElementSize(rect, style).height;
+    }
   }
 
   sortItems = (a,b) => (
@@ -180,106 +197,109 @@ class CollectionPage extends Component {
 
   render() {
     const sortedCards = cards.sort(this.sortItems);
-    return ([
-      <div className="nav-wrapper">
-        <div className="nav">
-          <BackBtn
-            pageNum="2"
-            onKeyDown={this.handleKeyNavigation}
-            ref={node => { this.backBtn = node; }}
-            setCurrentPage={this.props.setCurrentPage}
-          />
-        </div>
-      </div>,
-      <div className="wrapper wrapper--inner">
-        <div className="wrapper__sub" />
-        <Clock />
-        <div className="content-container">
-          <div className="description">
-            <div className="description-text">
-              <span className="description-text__subtitle">Collections</span>
-              <span className="description-text__title">Best of 2017</span>
-              <div className="description-text__count">
-                <span className="icon" />
-                <span className="descroption-title">22 Titles</span>
-              </div>
-              <div className="description-text__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                sunt in culpa qui officia deserunt mollit anim id est laborum. 
-              </div>
-            </div>
-            <div className="description-action">
-              {this.state.isShowBuyBtn
-                ?
-                  <div
-                    className="btn"
-                    name="buy"
-                    onClick={this.hideBuyBtn}
-                    onKeyDown={this.handleBuyBtnKeyDown}
-                    ref={node => { this.buyBtn = node; }}
-                    role="button"
-                    tabIndex="1"
-                  >
-                      Buy all XXX
-                      <span className="money-icon" />
-                  </div>
-                : null
-              }
-              <div className="sort-card" id="sortDropdown">
-                <div
-                  className="sort-card__title"
-                  name="sort-card__title"
-                  onClick={() => { this.setState({ isShowSortOptions: !this.state.isShowSortOptions }); }}
-                  onKeyDown={this.handleSortKeyDown}
-                  ref={node => { this.sortBtn = node; }}
-                  role="button"
-                  tabIndex="1"
-                >
-                  <span>Sort: <span>{ sortOptions.find(option => option.sortBy === this.state.sorting).text }</span></span>
+    return this.props.isCatalogUnmounted
+      ?
+      ([
+        <div className="nav-wrapper">
+          <div className="nav">
+            <BackBtn
+              pageNum="2"
+              onKeyDown={this.handleKeyNavigation}
+              ref={node => { this.backBtn = node; }}
+              setCurrentPage={this.props.setCurrentPage}
+            />
+          </div>
+        </div>,
+        <div className="wrapper wrapper--inner">
+          <div className="wrapper__sub" />
+          <Clock />
+          <div className="content-container">
+            <div className="description">
+              <div className="description-text">
+                <span className="description-text__subtitle">Collections</span>
+                <span className="description-text__title">Best of 2017</span>
+                <div className="description-text__count">
                   <span className="icon" />
+                  <span className="descroption-title">22 Titles</span>
                 </div>
-                <div className={`sort-card-list ${this.state.isShowSortOptions ? 'active' : ''} `}>
-                  {sortOptions.map((option, index) => (
-                    <span
-                      className={`sort-card-list__item ${this.state.sorting === option.sortBy ? 'active' : ''} `}
-                      data-sort={option.text}
-                      key={option.text}
-                      onClick={() => { this.setSortingCards(option.sortBy); }}
-                      onKeyDown={event => { this.handleSortOptionKeyDown(event, option.sortBy, index); }}
-                      ref={node => { this[`sortOptionBtn${index}`] = node; }}
+                <div className="description-text__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+                  nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+                  sunt in culpa qui officia deserunt mollit anim id est laborum. 
+                </div>
+              </div>
+              <div className="description-action">
+                {this.state.isShowBuyBtn
+                  ?
+                    <div
+                      className="btn"
+                      name="buy"
+                      onClick={this.hideBuyBtn}
+                      onKeyDown={this.handleBuyBtnKeyDown}
+                      ref={node => { this.buyBtn = node; }}
                       role="button"
                       tabIndex="1"
                     >
-                      {option.text}
-                    </span>
-                  ))}
+                        Buy all XXX
+                        <span className="money-icon" />
+                    </div>
+                  : null
+                }
+                <div className="sort-card" id="sortDropdown">
+                  <div
+                    className="sort-card__title"
+                    name="sort-card__title"
+                    onClick={() => { this.setState({ isShowSortOptions: !this.state.isShowSortOptions }); }}
+                    onKeyDown={this.handleSortKeyDown}
+                    ref={node => { this.sortBtn = node; }}
+                    role="button"
+                    tabIndex="1"
+                  >
+                    <span>Sort: <span>{ sortOptions.find(option => option.sortBy === this.state.sorting).text }</span></span>
+                    <span className="icon" />
+                  </div>
+                  <div className={`sort-card-list ${this.state.isShowSortOptions ? 'active' : ''} `}>
+                    {sortOptions.map((option, index) => (
+                      <span
+                        className={`sort-card-list__item ${this.state.sorting === option.sortBy ? 'active' : ''} `}
+                        data-sort={option.text}
+                        key={option.text}
+                        onClick={() => { this.setSortingCards(option.sortBy); }}
+                        onKeyDown={event => { this.handleSortOptionKeyDown(event, option.sortBy, index); }}
+                        ref={node => { this[`sortOptionBtn${index}`] = node; }}
+                        role="button"
+                        tabIndex="1"
+                      >
+                        {option.text}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="content">
-            <div className="content-row">
-              {sortedCards.map((card, index) => (
-                <Card
-                  index={index}
-                  key={card.name + index}
-                  name={card.name}
-                  onKeyDown={this.handleKeyNavigation}
-                  pic={card.pic}
-                  ref={node => { this[`card${index}`] = node; }}
-                  title={card.title}
-                  translateY={`translateY(${-(this.cardHeight * this.state.activeRow)}px)`}
-                />
-              ))}
+            <div className="content">
+              <div className="content-row">
+                {sortedCards.map((card, index) => (
+                  <Card
+                    index={index}
+                    key={card.name + index}
+                    name={card.name}
+                    onKeyDown={this.handleKeyNavigation}
+                    pic={card.pic}
+                    ref={node => { this[`card${index}`] = node; }}
+                    title={card.title}
+                    translateY={`translateY(${-(this.cardHeight * this.state.activeRow)}px)`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    ]);
+      ])
+      : null;
   }
 }
 

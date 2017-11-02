@@ -31,8 +31,14 @@ class CataloguePage extends Component {
       selectedCollectionIndex: 0,
       selectedOption: menuOptions[0]
     };
+  }
 
-    console.log('PIXEL RATIO: ', window.devicePixelRatio);
+  componentDidMount = () => {
+    this.props.setCatalogUnmounted(false);
+  }
+
+  componentWillUnmount = () => {
+    this.props.setCatalogUnmounted(true);
   }
 
   focusBackBtn = () => {
@@ -129,31 +135,34 @@ class CataloguePage extends Component {
   }
 
   render() {
-    return ([
-      <div className="nav-wrapper">
-        <div className="nav">
-          <BackBtn
-            onClick={this.showMenu}
-            onKeyDown={this.handleBackBtnNavigation}
-            ref={node => { this.backBtn = node; }}
+    return this.props.isCollectionUnmounted
+      ?
+      ([
+        <div className="nav-wrapper">
+          <div className="nav">
+            <BackBtn
+              onClick={this.showMenu}
+              onKeyDown={this.handleBackBtnNavigation}
+              ref={node => { this.backBtn = node; }}
+            />
+          </div>
+          <Menu
+            isShow={this.state.isShowMenu}
+            focusBackBtn={this.focusBackBtn}
+            isFocusMenu={this.state.isFocusMenu}
+            menuOptions={menuOptions}
+            onOptionFocus={this.handleOptionHover}
+            handeOptionSelect={this.hideMenu}
+            selectedOption={this.state.selectedOption}
           />
+        </div>,
+        <div className="wrapper">
+          <div className="wrapper__sub" />
+          <Clock />
+          { this.renderSelectedOption()}
         </div>
-        <Menu
-          isShow={this.state.isShowMenu}
-          focusBackBtn={this.focusBackBtn}
-          isFocusMenu={this.state.isFocusMenu}
-          menuOptions={menuOptions}
-          onOptionFocus={this.handleOptionHover}
-          handeOptionSelect={this.hideMenu}
-          selectedOption={this.state.selectedOption}
-        />
-      </div>,
-      <div className="wrapper">
-        <div className="wrapper__sub" />
-        <Clock />
-        { this.renderSelectedOption()}
-      </div>
-    ]);
+      ])
+      : null;
   }
 }
 
