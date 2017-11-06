@@ -68,10 +68,10 @@ class App extends Component {
     console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
   
     const minWidth = viewport.viewportWidthMin.find(width => window.innerWidth >= width);
-    const maxWidth = viewport.viewportWidthMin.find(width => window.innerWidth <= width);
+    const maxWidth = viewport.viewportWidthMax.find(width => window.innerWidth <= width);
 
     const viewportWidthMinClass = minWidth ? `viewport-width-min-${minWidth}` : '';
-    const viewportWidthMaxClass = minWidth ? `viewport-width-max-${maxWidth}` : '';
+    const viewportWidthMaxClass = maxWidth ? `viewport-width-max-${maxWidth}` : '';
 
     return (
       <div className={`content-holder ${viewportWidthMinClass} ${viewportWidthMaxClass}`}>
