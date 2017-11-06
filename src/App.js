@@ -7,6 +7,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { currentPageNum: 0, isCatalogUnmounted: true, isCollectionUnmounted: true };
+
+    console.log('***************************************************************************');
+    console.log('window.innerWidth: ', window.innerWidth);
+    console.log('window.innerHeight: ', window.innerHeight);
+    console.log('document.documentElement.clientWidth: ', document.documentElement.clientWidth);
+    console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
+    console.log('***************************************************************************');
+
+    this.viewportWindow = { width: window.innerWidth, height: window.innerHeight };
+    this.viewportDocument = { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight };
+
   }
 
   setCurrentPage = pageNum => {
@@ -28,6 +39,8 @@ class App extends Component {
         case 0:
           return (
             <CataloguePage
+              viewportWindow={this.viewportWindow}
+              viewportDocument={this.viewportDocument}
               isCollectionUnmounted={this.state.isCollectionUnmounted}
               key="defaultCatalog"
               setCatalogUnmounted={this.setCatalogUnmounted}

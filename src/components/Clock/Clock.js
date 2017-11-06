@@ -32,8 +32,8 @@ class Clock extends Component {
   render() {
     return (
       <div className="time">
-        <span id="time" className="time-count">{this.state.time}</span>
-        <span id="date" className="time-day">{this.state.date}</span>
+        <span id="time" className={`time-count ${this.props.viewportWindow.width > 1200 ? 'time-port' : ''}`}>{this.state.time}</span>
+        <span id="date" className={`time-day ${this.props.viewportDocument.width > 1200 ? 'date-port' : ''}`}>{this.state.date}</span>
       </div>
     );
   }

@@ -158,7 +158,10 @@ class CataloguePage extends Component {
         </div>,
         <div className="wrapper">
           <div className="wrapper__sub" />
-          <Clock />
+          <Clock 
+            viewportWindow={this.props.viewportWindow}
+            viewportDocument={this.props.viewportDocument}
+          />
           { this.renderSelectedOption()}
         </div>
       ])
