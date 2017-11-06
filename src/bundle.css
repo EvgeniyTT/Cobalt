@@ -1648,253 +1648,288 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (max-width: 1024px) {
-    .viewport-max-1024 .catalogue-wrapper {
+    .viewport-width-max-1024 .catalogue-wrapper {
         left: 55%;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .viewport-max-1024 .collection-wrapper {
+    .viewport-width-max-1024 .collection-wrapper {
         height: 16em;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .viewport-max-1024 .collection {
+    .viewport-width-max-1024 .collection {
         width: 17em;
         height: 12em;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .viewport-max-1024 .collection-holder {
+    .viewport-width-max-1024 .collection-holder {
         width: 17em;
         height: 12em;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .viewport-max-1024 .collection-text {
+    .viewport-width-max-1024 .collection-text {
         font-size: 14px;
     }
 }
 
 @media screen and (max-width: 1280px) {
-    .viewport-max-1280 .content-row {
+    .viewport-width-max-1280 .content-row {
         height: 346px;
     }
 }
 
 @media screen and (max-width: 1320px) {
-    .viewport-max-1320 .catalogue-inner-title span {
+    .viewport-width-max-1320 .catalogue-inner-title span {
         font-size: 3em;
     }
 }
 
 @media screen and (max-width: 1320px) {
-    .viewport-max-1320 .collection-wrapper {
+    .viewport-width-max-1320 .collection-wrapper {
         height: 19em;
     }
 }
 
 @media screen and (max-width: 1320px) {
-    .viewport-max-1320 .collection {
+    .viewport-width-max-1320 .collection {
         width: 25em;
         height: 15em;
     }
 }
 
 @media screen and (max-width: 1320px) {
-    .viewport-max-1320 .collection-holder {
+    .viewport-width-max-1320 .collection-holder {
         width: 25em;
         height: 15em;
     }
 }
 
 @media screen and (max-width: 1366px) {
-    .viewport-max-1366 .card {
+    .viewport-width-max-1366 .card {
         width: 150px;
         height: 230px;
     }
 }
 
 @media screen and (max-width: 1366px) {
-    .viewport-max-1366 .card-body {
+    .viewport-width-max-1366 .card-body {
         font-size: 12px;
     }
 }
 
 @media screen and (max-width: 1366px) {
-    .viewport-max-1366 .content-row {
+    .viewport-width-max-1366 .content-row {
         height: 394px;
     }
 }
 
 @media screen and (max-width: 1366px) {
-    .viewport-max-1366 .description {
+    .viewport-width-max-1366 .description {
         font-size: 14px;
     }
 }
 
 @media screen and (max-width: 1366px) {
-    .viewport-max-1366 .sort-card__title .icon {
+    .viewport-width-max-1366 .sort-card__title .icon {
         width: 1.1em;
         height: 1em;
     }
 }
 
 @media screen and (max-width: 1400px) {
-    .viewport-max-1400 .collection-wrapper {
+    .viewport-width-max-1400 .collection-wrapper {
         left: 100%;
         height: 24em;
     }
 }
 
 @media screen and (max-width: 1550px) {
-    .viewport-max-1550 .collection-wrapper {
+    .viewport-width-max-1550 .collection-wrapper {
         height: 19em;
     }
 }
 
 @media screen and (max-width: 1550px) {
-    .viewport-max-1550 .collection {
+    .viewport-width-max-1550 .collection {
         width: 27em;
         height: 17em;
     }
 }
 
 @media screen and (max-width: 1550px) {
-    .viewport-max-1550 .collection-holder {
+    .viewport-width-max-1550 .collection-holder {
         width: 27em;
         height: 17em;
     }
 }
 
+@media screen and (max-width: 1550px) {
+    .viewport-width-max-1550 .nav-hidden {
+        left: 2.1em;
+        width: 37em;
+    }
+}
+
 @media screen and (max-width: 1800px) {
-    .viewport-max-1800 .collection-wrapper {
+    .viewport-width-max-1800 .collection-wrapper {
         height: 24em;
     }
 }
 
 @media screen and (max-width: 1800px) {
-    .viewport-max-1800 .collection {
+    .viewport-width-max-1800 .collection {
         width: 30em;
         height: 20em;
     }
 }
 
 @media screen and (max-width: 1800px) {
-    .viewport-max-1800 .collection-holder {
+    .viewport-width-max-1800 .collection-holder {
         width: 30em;
         height: 20em;
     }
 }
 
+@media screen and (max-width: 1800px) {
+    .viewport-width-max-1800 .nav-hidden {
+        left: 4em;
+        width: 41em;
+    }
+}
+
 @media screen and (max-width: 1920px) {
-    .viewport-max-1920 .content-row {
+    .viewport-width-max-1920 .content-row {
         height: 425px;
     }
 }
 
+@media screen and (max-width: 1920px) {
+    .viewport-width-max-1920 .nav-hidden {
+        left: 3.5em;
+        width: 44em;
+    }
+}
+
 @media screen and (min-width: 1920px) {
-    .viewport-min-1920 .description {
+    .viewport-width-min-1920 .description {
         font-size: 20px;
     }
 }
 
 @media screen and (min-width: 1920px) {
-    .viewport-min-1920 .sort-card__title .icon {
+    .viewport-width-min-1920 .sort-card__title .icon {
         width: .8em;
         height: .8em;
     }
 }
 
 @media screen and (max-width: 2048px) {
-    .viewport-max-2048 .content-row {
+    .viewport-width-max-2048 .content-row {
         height: 497px;
     }
 }
 
+@media screen and (max-width: 2200px) {
+    .viewport-width-max-2200 .nav-hidden {
+        left: 2.4em;
+        width: 50em;
+    }
+}
+
 @media screen and (min-width: 2100px) {
-    .viewport-min-2100 .collection-wrapper {
+    .viewport-width-min-2100 .collection-wrapper {
         height: 34em;
     }
 }
 
 @media screen and (min-width: 2100px) {
-    .viewport-min-2100 .collection {
+    .viewport-width-min-2100 .collection {
         width: 45em;
         height: 30em;
     }
 }
 
 @media screen and (min-width: 2100px) {
-    .viewport-min-2100 .collection-holder {
+    .viewport-width-min-2100 .collection-holder {
         width: 45em;
         height: 30em;
     }
 }
 
 @media screen and (max-width: 2560px) {
-    .viewport-max-2560 .catalogue-inner-title span {
+    .viewport-width-max-2560 .catalogue-inner-title span {
         font-size: 5em;
     }
 }
 
 @media screen and (min-width: 2800px) {
-    .viewport-min-2800 .collection-wrapper {
+    .viewport-width-min-2800 .collection-wrapper {
         height: 41em;
     }
 }
 
 @media screen and (min-width: 2800px) {
-    .viewport-min-2800 .collection-inner-title {
+    .viewport-width-min-2800 .collection-inner-title {
         font-size: 30px;
     }
 }
 
 @media screen and (min-width: 2800px) {
-    .viewport-min-2800 .collection {
+    .viewport-width-min-2800 .collection {
         width: 60em;
         height: 37em;
     }
 }
 
 @media screen and (min-width: 2800px) {
-    .viewport-min-2800 .collection-holder {
+    .viewport-width-min-2800 .collection-holder {
         width: 60em;
         height: 37em;
     }
 }
 
+@media screen and (max-width: 3200px) {
+    .viewport-width-max-3200 .nav-hidden {
+        left: 1.5em;
+        width: 58em;
+    }
+}
+
 @media screen and (max-width: 3355px) {
-    .viewport-max-3355 .nav-hidden {
+    .viewport-width-max-3355 .nav-hidden {
         left: 6em;
         width: 89em;
     }
 }
 
 @media screen and (max-width: 3840px) {
-    .viewport-max-3840 .catalogue-inner-title span {
+    .viewport-width-max-3840 .catalogue-inner-title span {
         font-size: 8em;
     }
 }
 
 @media screen and (max-width: 3840px) {
-    .viewport-max-3840 .content-row {
+    .viewport-width-max-3840 .content-row {
         height: 1095px;
     }
 }
 
 @media screen and (max-width: 3840px) {
-    .viewport-max-3840 .nav-hidden {
+    .viewport-width-max-3840 .nav-hidden {
         left: 6em;
         width: 90em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .card {
+    .viewport-width-min-3840 .card {
         width: 520px;
         height: 840px;
         margin: 0 20px 35px 20px;
@@ -1902,7 +1937,7 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .card:focus .card-body {
+    .viewport-width-min-3840 .card:focus .card-body {
         -webkit-box-shadow: -20px 20px #ffde39;
         -moz-box-shadow: -20px 20px #ffde39;
         box-shadow: -20px 20px #ffde39;
@@ -1910,7 +1945,7 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .card:hover .card-body {
+    .viewport-width-min-3840 .card:hover .card-body {
         -webkit-box-shadow: -20px 20px #ffde39;
         -moz-box-shadow: -20px 20px #ffde39;
         box-shadow: -20px 20px #ffde39;
@@ -1918,40 +1953,40 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .card-body {
+    .viewport-width-min-3840 .card-body {
         font-size: 40px;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-wrapper {
+    .viewport-width-min-3840 .collection-wrapper {
         height: 60em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection {
+    .viewport-width-min-3840 .collection {
         width: 80em;
         height: 55em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-holder {
+    .viewport-width-min-3840 .collection-holder {
         width: 80em;
         height: 55em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-count {
+    .viewport-width-min-3840 .collection-count {
         width: 120px;
         height: 90px;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-count__icon {
+    .viewport-width-min-3840 .collection-count__icon {
         width: 32px;
         height: 32px;
         background: url('./assets/img/two-squares-big.png');
@@ -1959,25 +1994,25 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-count__count {
+    .viewport-width-min-3840 .collection-count__count {
         font-size: 2.5em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .collection-text {
+    .viewport-width-min-3840 .collection-text {
         font-size: 40px;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .description {
+    .viewport-width-min-3840 .description {
         font-size: 40px;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .description-text__count .icon {
+    .viewport-width-min-3840 .description-text__count .icon {
         width: 24px;
         height: 24px;
         background: url('./assets/img/layers-big.png');
@@ -1985,13 +2020,13 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .sort-card {
+    .viewport-width-min-3840 .sort-card {
         top: .3em;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .sort-card__title .icon {
+    .viewport-width-min-3840 .sort-card__title .icon {
         width: .8em;
         height: .7em;
         background: url('./assets/img/down-chevron.png');
@@ -1999,7 +2034,7 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .sort-card__title:hover .icon {
+    .viewport-width-min-3840 .sort-card__title:hover .icon {
         width: .8em;
         height: .7em;
         background: url('./assets/img/down-chevron-big-black.png');
@@ -2007,10 +2042,17 @@ screen and (max-height: 1600px) {
 }
 
 @media screen and (min-width: 3840px) {
-    .viewport-min-3840 .sort-card__title:focus .icon {
+    .viewport-width-min-3840 .sort-card__title:focus .icon {
         width: .8em;
         height: .7em;
         background: url('./assets/img/down-chevron-big-black.png');
+    }
+}
+
+@media screen and (max-width: 3840px) {
+    .viewport-width-min-3840 .nav-hidden {
+        left: 6em;
+        width: 90em;
     }
 }
 /*# sourceMappingURL=sourcemaps/assets.css.map */
@@ -2258,4 +2300,4 @@ body {
 }
 
 /*END:base*/
-/*# sourceMappingURL=sourcemaps/base.css.map */
+/* sourceMappingURL=sourcemaps/base.css.map */

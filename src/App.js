@@ -3,33 +3,17 @@ import './bundle.css';
 import CataloguePage from './pages/CataloguePage';
 import CollectionPage from './pages/CollectionPage';
 
+const viewport = {
+  viewportWidthMin: [1920, 2100, 2800, 3840],
+  viewportWidthMax: [1024, 1110, 1180, 1280, 1320, 1366, 1400, 1550, 1800, 1920, 2048, 2200, 2560, 3200, 3355, 3840],
+  viewportHeightMin: [],
+  viewportHeightMax: []
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { currentPageNum: 0, isCatalogUnmounted: true, isCollectionUnmounted: true };
-
-    // viewport-max-1024
-    // viewport-max-1280
-    // viewport-max-1320
-    // viewport-max-1366
-    // viewport-max-1400
-    // viewport-max-1550
-    // viewport-max-1800
-    // viewport-max-1920
-    // viewport-max-2048
-    // viewport-min-2100
-    // viewport-max-2560
-
-    console.log('***************************************************************************');
-    console.log('window.innerWidth: ', window.innerWidth);
-    console.log('window.innerHeight: ', window.innerHeight);
-    console.log('document.documentElement.clientWidth: ', document.documentElement.clientWidth);
-    console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
-    console.log('***************************************************************************');
-
-    this.viewportWindow = { width: window.innerWidth, height: window.innerHeight };
-    this.viewportDocument = { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight };
-
   }
 
   setCurrentPage = pageNum => {
@@ -50,8 +34,6 @@ class App extends Component {
       case 0:
         return (
           <CataloguePage
-            viewportWindow={this.viewportWindow}
-            viewportDocument={this.viewportDocument}
             isCollectionUnmounted={this.state.isCollectionUnmounted}
             key="defaultCatalog"
             setCatalogUnmounted={this.setCatalogUnmounted}
@@ -80,8 +62,19 @@ class App extends Component {
   }
 
   render() {
+    console.log('window.innerWidth: ', window.innerWidth);
+    console.log('window.innerHeight: ', window.innerHeight);
+    console.log('document.documentElement.clientWidth: ', document.documentElement.clientWidth);
+    console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
+  
+    const minWidth = viewport.viewportWidthMin.find(width => window.innerWidth >= width);
+    const maxWidth = viewport.viewportWidthMin.find(width => window.innerWidth <= width);
+
+    const viewportWidthMinClass = minWidth ? `viewport-width-min-${minWidth}` : '';
+    const viewportWidthMaxClass = minWidth ? `viewport-width-max-${maxWidth}` : '';
+
     return (
-      <div className="content-holder viewport-max-1024">
+      <div className={`content-holder ${viewportWidthMinClass} ${viewportWidthMaxClass}`}>
         {this.renderContent()}
       </div>
     );
