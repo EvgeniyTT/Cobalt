@@ -8,6 +8,18 @@ class App extends Component {
     super(props);
     this.state = { currentPageNum: 0, isCatalogUnmounted: true, isCollectionUnmounted: true };
 
+    // viewport-max-1024
+    // viewport-max-1280
+    // viewport-max-1320
+    // viewport-max-1366
+    // viewport-max-1400
+    // viewport-max-1550
+    // viewport-max-1800
+    // viewport-max-1920
+    // viewport-max-2048
+    // viewport-min-2100
+    // viewport-max-2560
+
     console.log('***************************************************************************');
     console.log('window.innerWidth: ', window.innerWidth);
     console.log('window.innerHeight: ', window.innerHeight);
@@ -33,40 +45,46 @@ class App extends Component {
     this.setState({ isCollectionUnmounted: mount });
   }
 
+  renderContent = () => {
+    switch (this.state.currentPageNum) {
+      case 0:
+        return (
+          <CataloguePage
+            viewportWindow={this.viewportWindow}
+            viewportDocument={this.viewportDocument}
+            isCollectionUnmounted={this.state.isCollectionUnmounted}
+            key="defaultCatalog"
+            setCatalogUnmounted={this.setCatalogUnmounted}
+            setCurrentPage={this.setCurrentPage}
+          />
+        );
+      case 1:
+        return (
+          <CollectionPage
+            isCatalogUnmounted={this.state.isCatalogUnmounted}
+            key="collection"
+            setCollectionUnmounted={this.setCollectionUnmounted}
+            setCurrentPage={this.setCurrentPage}
+          />
+        );
+      default:
+        return (
+          <CataloguePage
+            isCollectionUnmounted={this.state.isCollectionUnmounted}
+            key="defaultCatalog"
+            setCatalogUnmounted={this.setCatalogUnmounted}
+            setCurrentPage={this.setCurrentPage}
+          />
+        );
+    }
+  }
+
   render() {
-    return (() => {
-      switch (this.state.currentPageNum) {
-        case 0:
-          return (
-            <CataloguePage
-              viewportWindow={this.viewportWindow}
-              viewportDocument={this.viewportDocument}
-              isCollectionUnmounted={this.state.isCollectionUnmounted}
-              key="defaultCatalog"
-              setCatalogUnmounted={this.setCatalogUnmounted}
-              setCurrentPage={this.setCurrentPage}
-            />
-          );
-        case 1:
-          return (
-            <CollectionPage
-              isCatalogUnmounted={this.state.isCatalogUnmounted}
-              key="collection"
-              setCollectionUnmounted={this.setCollectionUnmounted}
-              setCurrentPage={this.setCurrentPage}
-            />
-          );
-        default:
-          return (
-            <CataloguePage
-              isCollectionUnmounted={this.state.isCollectionUnmounted}
-              key="defaultCatalog"
-              setCatalogUnmounted={this.setCatalogUnmounted}
-              setCurrentPage={this.setCurrentPage}
-            />
-          );
-      }
-    })();
+    return (
+      <div className="content-holder viewport-max-1024">
+        {this.renderContent()}
+      </div>
+    );
   }
 }
 
