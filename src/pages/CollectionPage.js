@@ -37,6 +37,7 @@ class CollectionPage extends Component {
   constructor(props) {
     super(props);
     this.cardHeight = 0;
+    this.isInitialFocusSet = false;
     this.state = {
       activeRow: 0,
       isShowBuyBtn: true,
@@ -67,9 +68,9 @@ class CollectionPage extends Component {
   }
 
   initialSettings = () => {
-    if (this.buyBtn) {
-      console.log('SET FOCUS!!!!!!');
+    if (this.buyBtn && !this.isInitialFocusSet) {
       ReactDOM.findDOMNode(this.buyBtn).focus();
+      this.isInitialFocusSet = true;
     }
 
     if (this.card0 && !this.cardHeight) {
@@ -172,9 +173,9 @@ class CollectionPage extends Component {
     } else if (event.target.getAttribute('name') === 'card') {
       switch (event.keyCode) {
         case KEY_LEFT:
-          if (index === 0) {
+          if (index === 0 || (index % CARDS_IN_ROW) === 0) {
             ReactDOM.findDOMNode(this.backBtn).focus();
-          } else if ((index) % CARDS_IN_ROW !== 0) {
+          } else  {
             ReactDOM.findDOMNode(this[`card${index - 1}`]).focus();
             this.setActiveRow(index - 1);
           }
