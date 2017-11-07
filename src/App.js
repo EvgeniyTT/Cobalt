@@ -4,9 +4,9 @@ import CataloguePage from './pages/CataloguePage';
 import CollectionPage from './pages/CollectionPage';
 
 const viewport = {
-  viewportWidthMin: [1920, 2100, 2800, 3840],
+  // viewportWidthMin: [1920, 2100, 2800, 3840],
   viewportWidthMax: [1024, 1110, 1180, 1280, 1320, 1366, 1400, 1550, 1800, 1920, 2048, 2200, 2560, 3200, 3355, 3840],
-  viewportHeightMin: [],
+  // viewportHeightMin: [],
   viewportHeightMax: []
 };
 
@@ -67,14 +67,17 @@ class App extends Component {
     console.log('document.documentElement.clientWidth: ', document.documentElement.clientWidth);
     console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
   
-    const minWidth = viewport.viewportWidthMin.find(width => window.innerWidth >= width);
+    // const minWidths = viewport.viewportWidthMin.filter(width => window.innerWidth >= width);
     const maxWidth = viewport.viewportWidthMax.find(width => window.innerWidth <= width);
 
-    const viewportWidthMinClass = minWidth ? `viewport-width-min-${minWidth}` : '';
-    const viewportWidthMaxClass = maxWidth ? `viewport-width-max-${maxWidth}` : '';
+    // console.log('minWidth: ', minWidths);
+    console.log('minWidth: ', maxWidth);
+
+    // const viewportWidthMinClasses = minWidths.length ? minWidths.map(width => ` viewport-width-min-${width}`).join('') : '';
+    const viewportWidthMaxClass = maxWidth ? ` viewport-width-${maxWidth}` : '';
 
     return (
-      <div className={`content-holder ${viewportWidthMinClass} ${viewportWidthMaxClass}`}>
+      <div className={`content-holder${viewportWidthMaxClass}`}>
         {this.renderContent()}
       </div>
     );
