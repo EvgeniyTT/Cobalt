@@ -1815,6 +1815,34 @@ screen and (max-height: 1600px) {
     font-size: 40px;
 }
 
+.viewport-width-3840 .content-container {
+    width: 176em;
+}
+
+.viewport-width-3840 .btn:hover .money-icon {
+    width: 30px;
+    height: 30px;
+    background: url('./assets/img/ruble-currency-sign-big-black.png');
+}
+
+.viewport-width-3840 .btn:focus .money-icon {
+    width: 30px;
+    height: 30px;
+    background: url('./assets/img/ruble-currency-sign-big-black.png');
+}
+
+.viewport-width-3840 .btn.active .money-icon {
+    width: 30px;
+    height: 30px;
+    background: url('./assets/img/ruble-currency-sign-big-black.png');
+}
+
+.viewport-width-3840 .btn .money-icon {
+    width: 30px;
+    height: 30px;
+    background: url('./assets/img/ruble-currency-sign-big-light.png');
+}
+
 .viewport-width-2048 .catalogue-inner-title span {
     font-size: 5em;
 }
@@ -1869,6 +1897,26 @@ screen and (max-height: 1600px) {
 
 .viewport-width-2048 .time {
     font-size: 20px;
+}
+
+.viewport-width-2048 .btn:hover .money-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.viewport-width-2048 .btn:focus .money-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.viewport-width-2048 .btn.active .money-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.viewport-width-2048 .btn .money-icon {
+    width: 15px;
+    height: 15px;
 }
 
 .viewport-width-1920 .catalogue-inner-title span {
@@ -1965,6 +2013,16 @@ screen and (max-height: 1600px) {
 
 .viewport-width-1366 .nav {
     width: 115px;
+}
+
+.viewport-width-1366 .content-container {
+    top: 3em;
+    width: 53.2em;
+}
+
+.viewport-width-1366 .btn .money-icon {
+    width: 11px;
+    height: 11px;
 }
 
 .viewport-width-1280 .card {
@@ -2073,6 +2131,11 @@ screen and (max-height: 1600px) {
     padding: 20px 0;
 }
 
+.viewport-width-1280 .content-container {
+    top: 3em;
+    width: 53.2em;
+}
+
 .viewport-width-1280 .description {
     font-size: 14px;
 }
@@ -2102,6 +2165,11 @@ screen and (max-height: 1600px) {
 
 .viewport-width-1280 .nav {
     width: 115px;
+}
+
+.viewport-width-1280 .btn .money-icon {
+    width: 11px;
+    height: 11px;
 }
 
 .viewport-width-1024 .card {
@@ -2172,6 +2240,15 @@ screen and (max-height: 1600px) {
 
 .viewport-width-1024 .nav {
     width: 115px;
+}
+
+.viewport-width-1024 .content-container {
+    width: 46em;
+}
+
+.viewport-width-1024 .btn .money-icon {
+    width: 11px;
+    height: 11px;
 }
 /*# sourceMappingURL=sourcemaps/assets.css.map */
 
