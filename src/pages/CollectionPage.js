@@ -67,13 +67,7 @@ class CollectionPage extends Component {
   }
 
   initialSettings = () => {
-    console.log('***************');
-    console.log('SET INITIAL SETTINGS');
-    const focusedElement = document.querySelector(':focus');
-    if (this.buyBtn) { console.log('BUY BUTTON EXIST'); }
-    if (focusedElement) { console.log('FOCUS IS SET'); }
-
-    if (this.buyBtn && !focusedElement) {
+    if (this.buyBtn) {
       console.log('SET FOCUS!!!!!!');
       ReactDOM.findDOMNode(this.buyBtn).focus();
     }
