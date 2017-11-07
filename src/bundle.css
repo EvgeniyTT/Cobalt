@@ -1871,6 +1871,102 @@ screen and (max-height: 1600px) {
     font-size: 20px;
 }
 
+.viewport-width-1920 .catalogue-inner-title span {
+    font-size: 5em;
+}
+
+.viewport-width-1920 .collection-wrapper {
+    height: 60em;
+}
+
+.viewport-width-1920 .content-row {
+    height: 425px;
+}
+
+.viewport-width-1920 .description {
+    font-size: 20px;
+}
+
+.viewport-width-1920 .sort-card__title .icon {
+    width: .8em;
+    height: .8em;
+}
+
+.viewport-width-1920 .nav-hidden {
+    left: 3.5em;
+    width: 44em;
+}
+
+.viewport-width-1920 .nav-arrow {
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.viewport-width-1920 .nav-arrow::before {
+    top: 25px;
+    left: 22px;
+}
+
+.viewport-width-1920 .nav-arrow::after {
+    top: 32px;
+    left: 22px;
+}
+
+.viewport-width-1920 .time {
+    font-size: 20px;
+}
+
+.viewport-width-1366 .card {
+    width: 150px;
+    height: 230px;
+}
+
+.viewport-width-1366 .card-body {
+    font-size: 12px;
+}
+
+.viewport-width-1366 .catalogue-inner-title span {
+    font-size: 5em;
+}
+
+.viewport-width-1366 .collection-wrapper {
+    height: 19em;
+}
+
+.viewport-width-1366 .collection {
+    width: 27em;
+    height: 17em;
+}
+
+.viewport-width-1366 .collection-holder {
+    width: 27em;
+    height: 17em;
+}
+
+.viewport-width-1366 .content-row {
+    height: 394px;
+}
+
+.viewport-width-1366 .description {
+    font-size: 14px;
+}
+
+.viewport-width-1366 .sort-card__title .icon {
+    width: 1.1em;
+    height: 1em;
+}
+
+.viewport-width-1366 .nav-hidden {
+    left: 2.1em;
+}
+
+.viewport-width-1366 .nav {
+    width: 115px;
+}
+
 .viewport-width-1280 .card {
     position: relative;
     z-index: 0;
@@ -2005,6 +2101,76 @@ screen and (max-height: 1600px) {
 }
 
 .viewport-width-1280 .nav {
+    width: 115px;
+}
+
+.viewport-width-1024 .card {
+    width: 150px;
+    height: 230px;
+}
+
+.viewport-width-1024 .card-body {
+    font-size: 12px;
+}
+
+.viewport-width-1024 .catalogue-wrapper {
+    left: 55%;
+}
+
+.viewport-width-1024 .catalogue-inner-title span {
+    font-size: 5em;
+}
+
+.viewport-width-1024 .collection-wrapper {
+    height: 16em;
+}
+
+.viewport-width-1024 .collection {
+    width: 17em;
+    height: 12em;
+}
+
+.viewport-width-1024 .collection-holder {
+    width: 17em;
+    height: 12em;
+}
+
+.viewport-width-1024 .collection-text {
+    font-size: 14px;
+}
+
+.viewport-width-1024 .content-row {
+    height: 346px;
+}
+
+.viewport-width-1024 .description {
+    font-size: 14px;
+}
+
+.viewport-width-1024 .sort-card__title .icon {
+    display: inline-block;
+    width: 1.1em;
+    height: 1em;
+    margin-left: .3em;
+    vertical-align: middle;
+    background: url('./assets/img/down-arrow.png');
+}
+
+.viewport-width-1024 .nav-hidden {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 3.3em;
+    display: block;
+    width: 31em;
+    height: 100%;
+    background: url('./assets/img/bg_fx_menu.png') no-repeat;
+    background-position: right center;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.viewport-width-1024 .nav {
     width: 115px;
 }
 /*# sourceMappingURL=sourcemaps/assets.css.map */

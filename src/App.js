@@ -3,12 +3,7 @@ import './bundle.css';
 import CataloguePage from './pages/CataloguePage';
 import CollectionPage from './pages/CollectionPage';
 
-const viewport = {
-  // viewportWidthMin: [1920, 2100, 2800, 3840],
-  viewportWidthMax: [1024, 2048, 3840],
-  // viewportHeightMin: [],
-  viewportHeightMax: []
-};
+const viewportWidthMax = [1024, 1280, 1366, 1920, 2048, 3840];
 
 class App extends Component {
   constructor(props) {
@@ -62,18 +57,8 @@ class App extends Component {
   }
 
   render() {
-    console.log('window.innerWidth: ', window.innerWidth);
-    console.log('window.innerHeight: ', window.innerHeight);
-    console.log('document.documentElement.clientWidth: ', document.documentElement.clientWidth);
-    console.log('document.documentElement.clientWidth: ', document.documentElement.clientHeight);
-  
-    // const minWidths = viewport.viewportWidthMin.filter(width => window.innerWidth >= width);
-    const maxWidth = viewport.viewportWidthMax.find(width => window.innerWidth <= width);
-
-    // console.log('minWidth: ', minWidths);
-    console.log('minWidth: ', maxWidth);
-
-    // const viewportWidthMinClasses = minWidths.length ? minWidths.map(width => ` viewport-width-min-${width}`).join('') : '';
+    // appears cobalt doesn't support media queries like browsers, so we have to apply classes based on window.innerWidth
+    const maxWidth = viewportWidthMax.find(width => window.innerWidth <= width);
     const viewportWidthMaxClass = maxWidth ? ` viewport-width-${maxWidth}` : '';
 
     return (

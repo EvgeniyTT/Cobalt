@@ -130,13 +130,21 @@ class CollectionPage extends Component {
     } else if (event.target.getAttribute('name') === 'back') {
       switch (event.keyCode) {
         case KEY_RIGHT:
-          ReactDOM.findDOMNode(this.buyBtn).focus();
+          if (ReactDOM.findDOMNode(this.buyBtn)) {
+            ReactDOM.findDOMNode(this.buyBtn).focus();
+          } else {
+            ReactDOM.findDOMNode(this.sortBtn).focus();
+          }
           break;
       }
     } else if (this.sortBtn === document.activeElement) {
       switch (event.keyCode) {
         case KEY_LEFT:
-          ReactDOM.findDOMNode(this.buyBtn).focus();
+          if (ReactDOM.findDOMNode(this.buyBtn)) {
+            ReactDOM.findDOMNode(this.buyBtn).focus();
+          } else {
+            ReactDOM.findDOMNode(this.backBtn).focus();
+          }
           break;
         case KEY_DOWN:
           if (this.state.isShowSortOptions) {
@@ -182,9 +190,9 @@ class CollectionPage extends Component {
           }
           break;
         case KEY_UP:
-          if (index < 3) {
+          if (index < 3 && ReactDOM.findDOMNode(this.buyBtn)) {
             ReactDOM.findDOMNode(this.buyBtn).focus();
-          } else if (index === 3 || index === 4) {
+          } else if ((index === 3 || index === 4) || (index <= 4 && !ReactDOM.findDOMNode(this.buyBtn))) {
             ReactDOM.findDOMNode(this.sortBtn).focus();
           } else if (index >= CARDS_IN_ROW) {
             ReactDOM.findDOMNode(this[`card${index - CARDS_IN_ROW}`]).focus();
