@@ -2144,7 +2144,6 @@ screen and (max-height: 1600px) {
     height: 1em;
     margin-left: .3em;
     vertical-align: middle;
-    background: url('./assets/img/down-arrow.png');
 }
 
 .viewport-width-1280 .nav-hidden {
@@ -2221,7 +2220,6 @@ screen and (max-height: 1600px) {
     height: 1em;
     margin-left: .3em;
     vertical-align: middle;
-    background: url('./assets/img/down-arrow.png');
 }
 
 .viewport-width-1024 .nav-hidden {
