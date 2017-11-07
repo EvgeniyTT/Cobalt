@@ -5,7 +5,7 @@ import CollectionPage from './pages/CollectionPage';
 
 const viewport = {
   // viewportWidthMin: [1920, 2100, 2800, 3840],
-  viewportWidthMax: [1024, 1110, 1180, 1280, 1320, 1366, 1400, 1550, 1800, 1920, 2048, 2200, 2560, 3200, 3355, 3840],
+  viewportWidthMax: [1024, 2048, 3840],
   // viewportHeightMin: [],
   viewportHeightMax: []
 };
