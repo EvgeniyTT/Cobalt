@@ -2073,10 +2073,20 @@ screen and (max-height: 1600px) {
     font-size: 3em;
 }
 
-.viewport-width-1280 .clection-wrapper {
+.viewport-width-1280 .cllection-wrapper {
+    position: absolute;
+    z-index: 5;
     top: 50%;
     left: 100%;
     height: 19em;
+    padding: 20px;
+    padding: 20px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 }
 
 .viewport-width-1280 .collection {
@@ -2190,6 +2200,7 @@ screen and (max-height: 1600px) {
 }
 
 .viewport-width-1024 .collection-wrapper {
+    left: 102%;
     height: 16em;
 }
 
