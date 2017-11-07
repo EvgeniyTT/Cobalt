@@ -67,8 +67,15 @@ class CollectionPage extends Component {
   }
 
   initialSettings = () => {
+    console.log('SET INITIAL SETTINGS');
     const focusedElement = document.querySelector(':focus');
-    if (this.buyBtn && !focusedElement) ReactDOM.findDOMNode(this.buyBtn).focus();
+    console.log('this.buyBtn: ', this.buyBtn);
+    console.log('focusedElement: ', focusedElement);
+
+    if (this.buyBtn && !focusedElement) {
+      console.log('SET FOCUS');
+      ReactDOM.findDOMNode(this.buyBtn).focus();
+    }
 
     if (this.card0 && !this.cardHeight) {
       const rect = ReactDOM.findDOMNode(this.card0).getBoundingClientRect();
