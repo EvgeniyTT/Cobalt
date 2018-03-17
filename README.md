@@ -1,7 +1,7 @@
 TV on Cobalt
 ====================================================
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-[Demo](https://evgeniytt.github.io/cobalt/)
+Demo at https://evgeniytt.github.io/cobalt/
 
 Technologies
 ------------
